@@ -1,0 +1,22 @@
+{
+  "name": "greggsmenutesting",
+  "version": "1.0.0",
+  "description": "Comprehensive automated testing framework for Greggs.com menu functionality covering UI, accessibility, performance, and functional testing using Playwright and TypeScript",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharlesAdairUK/GreggsMenuTesting.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CharlesAdairUK/GreggsMenuTesting/issues"
+  },
+  "homepage": "https://github.com/CharlesAdairUK/GreggsMenuTesting#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.5.2"
+  }
+}
