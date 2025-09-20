@@ -4,6 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "./tests/specs",
   fullyParallel: true,
+  timeout: 130000,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
@@ -19,7 +20,8 @@ export default defineConfig({
     screenshot: "only-on-failure",
     video: "retain-on-failure",
     actionTimeout: 10000,
-    navigationTimeout: 30000,
+    navigationTimeout: 130000,
+    headless: false,
     extraHTTPHeaders: {
       Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     },

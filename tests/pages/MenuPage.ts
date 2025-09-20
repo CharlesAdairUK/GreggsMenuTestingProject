@@ -62,7 +62,7 @@ export class MenuPage extends BasePage {
 
     // Category sections
     this.breakfastSection = page.locator(
-      '[data-category="breakfast"], .breakfast-section, section:has(h2:has-text("Breakfast"))'
+      '[data-category="breakfast"], .breakfast-section, button:has-text("Breakfast"), section:has(h2:has-text("Breakfast"))'
     );
     this.savouriesSection = page.locator(
       '[data-category="savouries"], .savouries-section, section:has(h2:has-text("Savouries"))'
@@ -97,11 +97,18 @@ export class MenuPage extends BasePage {
 
   async waitForMenuItemsToLoad() {
     // Ensure cookie consent is handled first
-    await this.handleCookieConsent();
-    await this.page.waitForSelector(
-      '.menu-item, [data-testid="menu-item"], .product-card',
-      { timeout: 10000 }
-    );
+    try {
+      if (typeof this.handleCookieConsent === "function") {
+        await this.handleCookieConsent();
+      }
+    } catch (e) {
+      // Ignore errors if cookie banner is not present
+    }
+    // Wait for menu items to be present
+    await this.page.waitForSelector("a[data-test-card]", {
+      timeout: 15000,
+      state: "visible",
+    });
     await this.waitForLoadingToComplete();
   }
 

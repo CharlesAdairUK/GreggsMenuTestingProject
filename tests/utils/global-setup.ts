@@ -10,7 +10,7 @@ async function globalSetup(config: FullConfig) {
   try {
     // Visit the site and handle cookies once globally
     await page.goto("https://www.greggs.com/menu");
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(6000);
 
     // Handle cookie consent
     const cookieBanner = page

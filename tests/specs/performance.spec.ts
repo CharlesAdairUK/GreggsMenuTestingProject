@@ -4,11 +4,17 @@ import { TestData } from "../data/test-data";
 import { TestHelpers } from "../utils/test-helpers";
 
 test.describe("Performance Tests", () => {
+  test("should reject cookies before performance test", async ({ page }) => {
+    await TestHelpers.ensurePageReady(page);
+  });
+
   test("should load menu page within acceptable time", async ({
     page,
     menuPage,
   }) => {
     const loadTime = await TestHelpers.measurePageLoadTime(page, menuPage.url);
+    // Handle cookies first
+    TestHelpers.ensurePageReady;
     expect(loadTime).toBeLessThan(TestData.performanceThresholds.pageLoadTime);
 
     // Essential content should be visible
