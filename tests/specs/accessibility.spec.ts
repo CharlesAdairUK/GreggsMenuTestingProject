@@ -27,6 +27,7 @@ test.describe("Accessibility Tests", () => {
 
   test("should have proper ARIA attributes", async ({ page, menuPage }) => {
     // Check navigation has proper ARIA
+    await TestHelpers.ensurePageReady(page);
     const nav = menuPage.mainNavigation;
     if ((await nav.count()) > 0) {
       const ariaLabel = await nav.getAttribute("aria-label");
@@ -35,22 +36,26 @@ test.describe("Accessibility Tests", () => {
     }
 
     // Check menu items have proper labels
-    const firstItem = await menuPage.getFirstMenuItem();
-    const hasAriaLabel = await firstItem.element.getAttribute("aria-label");
-    const hasRole = await firstItem.element.getAttribute("role");
-
-    expect(hasAriaLabel || hasRole).toBeTruthy();
+    const menuItemElement = page.locator("a[data-test-card]").first();
+    if ((await menuItemElement.count()) > 0) {
+      const hasAriaLabel = await menuItemElement.getAttribute("aria-label");
+      const hasRole = await menuItemElement.getAttribute("role");
+      expect(hasAriaLabel || hasRole).toBeTruthy();
+    } else {
+      // Fail the test if no menu items are found
+      throw new Error("No menu items found to check ARIA attributes.");
+    }
   });
 
   test("should have sufficient color contrast", async ({ page, menuPage }) => {
-    const firstItem = await menuPage.getFirstMenuItem();
-
+    const menuItemElement = page.locator("a[data-test-card]").first();
     const nameColor = await TestHelpers.getComputedStyle(
-      firstItem.name,
+      menuItemElement,
       "color"
     );
+    const priceElement = menuItemElement.locator("[data-test-card-price]");
     const priceColor = await TestHelpers.getComputedStyle(
-      firstItem.price,
+      priceElement,
       "color"
     );
 

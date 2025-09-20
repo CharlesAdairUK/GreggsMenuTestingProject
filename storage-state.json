@@ -2,20 +2,20 @@
   "cookies": [
     {
       "name": "OptanonAlertBoxClosed",
-      "value": "2025-09-20T15:13:19.721Z",
+      "value": "2025-09-20T17:08:26.674Z",
       "domain": ".www.greggs.com",
       "path": "/",
-      "expires": 1789917199,
+      "expires": 1789924106,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "OptanonConsent",
-      "value": "isGpcEnabled=0&datestamp=Sat+Sep+20+2025+16%3A13%3A19+GMT%2B0100+(British+Summer+Time)&version=202501.2.0&browserGpcFlag=0&isIABGlobal=false&consentId=7b74867d-4925-4f71-a995-0184e98b97ab&interactionCount=1&isAnonUser=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0003%3A0%2CC0004%3A0%2CC0002%3A0&hosts=H9%3A0&genVendors=&intType=2",
+      "value": "isGpcEnabled=0&datestamp=Sat+Sep+20+2025+18%3A08%3A26+GMT%2B0100+(British+Summer+Time)&version=202501.2.0&browserGpcFlag=0&isIABGlobal=false&consentId=aa52f0ac-1449-4486-910c-5ce580752e16&interactionCount=1&isAnonUser=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0003%3A0%2CC0004%3A0%2CC0002%3A0&hosts=H9%3A0&genVendors=&intType=2",
       "domain": ".www.greggs.com",
       "path": "/",
-      "expires": 1789917199,
+      "expires": 1789924106,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -27,7 +27,7 @@
       "localStorage": [
         {
           "name": "rc::a",
-          "value": "MXIyM3F4aDE0c3Y1cHk="
+          "value": "MW9jbXdkYzE0MmlhN3g="
         }
       ]
     }

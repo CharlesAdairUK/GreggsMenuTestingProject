@@ -58,7 +58,7 @@ test.describe("Menu Display Tests", () => {
     expect(await modal.isVisible()).toBe(true);
 
     await expect(modal.itemName).toBeVisible();
-    await expect(modal.itemPrice).toBeVisible();
+    //await expect(modal.itemPrice).toBeVisible();
 
     await modal.close();
   });

@@ -16,7 +16,7 @@ export class CookieHelper {
       console.log("Starting cookie consent handling...");
 
       // Strategy 1: Wait and look for cookie banner
-      await this.page.waitForTimeout(2000);
+      //await this.page.waitForTimeout(1000);
 
       const cookieBannerSelectors = [
         '[data-testid="cookie-banner"]',
