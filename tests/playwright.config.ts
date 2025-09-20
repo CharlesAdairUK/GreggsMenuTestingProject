@@ -14,7 +14,7 @@ export default defineConfig({
   ],
 
   use: {
-    baseURL: "https://www.greggs.com",
+    baseURL: "https://www.greggs.com/menu",
     trace: "on-first-retry",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
