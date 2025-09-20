@@ -17,6 +17,9 @@
   "homepage": "https://github.com/CharlesAdairUK/GreggsMenuTesting#readme",
   "devDependencies": {
     "@playwright/test": "^1.55.0",
-    "@types/node": "^24.5.2"
+    "@types/node": "^24.5.2",
+    "@typescript-eslint/eslint-plugin": "^8.44.0",
+    "@typescript-eslint/parser": "^8.44.0",
+    "eslint": "^9.36.0"
   }
 }
