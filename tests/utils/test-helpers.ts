@@ -1,5 +1,6 @@
 // tests/utils/test-helpers.ts
 import { Page, Locator, expect } from "@playwright/test";
+import { CookieHelper } from "./cookie-helper";
 
 export class TestHelpers {
   static async waitForNetworkIdle(page: Page, timeout: number = 5000) {
@@ -114,5 +115,71 @@ export class TestHelpers {
     }
 
     throw lastError!;
+  }
+
+  /**
+   * Ensure page is ready for testing by handling cookies and waiting for content
+   */
+  static async ensurePageReady(
+    page: Page,
+    timeout: number = 10000
+  ): Promise<void> {
+    const cookieHelper = new CookieHelper(page);
+
+    // Handle cookies first
+    await cookieHelper.handleCookieConsent();
+
+    // Wait for page to be ready
+    await page.waitForLoadState("networkidle", { timeout });
+
+    // Ensure no overlays are blocking interactions
+    await page.evaluate(() => {
+      const overlays = document.querySelectorAll(
+        '[style*="z-index"], .modal, .popup, .overlay'
+      );
+      overlays.forEach((overlay) => {
+        if (overlay instanceof HTMLElement) {
+          const zIndex = parseInt(
+            window.getComputedStyle(overlay).zIndex || "0"
+          );
+          if (zIndex > 1000) {
+            overlay.style.display = "none";
+          }
+        }
+      });
+    });
+  }
+
+  /**
+   * Retry an action with cookie handling
+   */
+  static async retryWithCookieHandling<T>(
+    page: Page,
+    action: () => Promise<T>,
+    maxAttempts: number = 3
+  ): Promise<T> {
+    const cookieHelper = new CookieHelper(page);
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        // Handle cookies before each attempt
+        if (await cookieHelper.isCookieBannerPresent()) {
+          await cookieHelper.handleCookieConsent();
+        }
+
+        return await action();
+      } catch (error) {
+        if (attempt === maxAttempts) {
+          throw error;
+        }
+
+        console.log(
+          `Attempt ${attempt} failed, retrying with cookie handling...`
+        );
+        await page.waitForTimeout(1000);
+      }
+    }
+
+    throw new Error("All attempts failed");
   }
 }

@@ -1,0 +1,35 @@
+{
+  "cookies": [
+    {
+      "name": "OptanonAlertBoxClosed",
+      "value": "2025-09-20T06:07:20.902Z",
+      "domain": ".www.greggs.com",
+      "path": "/",
+      "expires": 1789884440,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "OptanonConsent",
+      "value": "isGpcEnabled=0&datestamp=Sat+Sep+20+2025+07%3A07%3A20+GMT%2B0100+(British+Summer+Time)&version=202501.2.0&browserGpcFlag=0&isIABGlobal=false&consentId=aa57168e-dfe6-4c86-b62b-bad5ac4bc7c3&interactionCount=1&isAnonUser=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0003%3A0%2CC0004%3A0%2CC0002%3A0&hosts=H9%3A0&genVendors=&intType=2",
+      "domain": ".www.greggs.com",
+      "path": "/",
+      "expires": 1789884440,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.google.com",
+      "localStorage": [
+        {
+          "name": "rc::a",
+          "value": "czA3anFnMWlybHRtZA=="
+        }
+      ]
+    }
+  ]
+}

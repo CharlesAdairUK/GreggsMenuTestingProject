@@ -96,6 +96,8 @@ export class MenuPage extends BasePage {
   }
 
   async waitForMenuItemsToLoad() {
+    // Ensure cookie consent is handled first
+    await this.handleCookieConsent();
     await this.page.waitForSelector(
       '.menu-item, [data-testid="menu-item"], .product-card',
       { timeout: 10000 }

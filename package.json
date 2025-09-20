@@ -1,39 +1,32 @@
 {
-  "name": "greggsmenutesting",
+  "name": "greggs-menu-tests",
   "version": "1.0.0",
-  "description": "Comprehensive automated testing framework for Greggs.com menu functionality covering UI, accessibility, performance, and functional testing using Playwright and TypeScript",
-  "main": "index.js",
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
     "test:ui": "playwright test --ui",
+    "test:cookies": "playwright test tests/specs/cookie-consent.spec.ts",
     "test:mobile": "playwright test --project='Mobile Chrome'",
     "test:desktop": "playwright test --project='Desktop Chrome'",
     "test:all-browsers": "playwright test --project='Desktop Chrome' --project='Desktop Firefox' --project='Desktop Safari'",
     "test:accessibility": "playwright test tests/specs/accessibility.spec.ts",
     "test:performance": "playwright test tests/specs/performance.spec.ts",
     "test:responsive": "playwright test tests/specs/responsive-design.spec.ts",
+    "test:navigation": "playwright test tests/specs/menu-navigation.spec.ts",
+    "test:display": "playwright test tests/specs/menu-display.spec.ts",
+    "test:search": "playwright test tests/specs/search-filter.spec.ts",
+    "test:functional": "playwright test tests/specs/functionality.spec.ts",
+    "test:error-handling": "playwright test tests/specs/error-handling.spec.ts",
+    "test:smoke": "playwright test tests/specs/cookie-consent.spec.ts tests/specs/menu-navigation.spec.ts --workers=1",
+    "test:regression": "playwright test --project='Desktop Chrome' --project='Mobile Chrome'",
+    "test:ci": "playwright test --reporter=json",
     "report": "playwright show-report",
-    "install-browsers": "playwright install"
+    "install-browsers": "playwright install",
+    "clean": "rm -rf test-results/ screenshots/ storage-state.json"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CharlesAdairUK/GreggsMenuTesting.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CharlesAdairUK/GreggsMenuTesting/issues"
-  },
-  "homepage": "https://github.com/CharlesAdairUK/GreggsMenuTesting#readme",
   "devDependencies": {
-    "@playwright/test": "^1.55.0",
-    "@types/node": "^24.5.2",
-    "@typescript-eslint/eslint-plugin": "^8.44.0",
-    "@typescript-eslint/parser": "^8.44.0",
-    "eslint": "^9.36.0",
+    "@playwright/test": "^1.40.0",
     "typescript": "^5.0.0"
   }
 }

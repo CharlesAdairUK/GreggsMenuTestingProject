@@ -5,14 +5,43 @@ import { MenuItemModal } from "../pages/MenuItemModal";
 type TestFixtures = {
   menuPage: MenuPage;
   menuItemModal: MenuItemModal;
+  pageWithCookieHandling: Page;
 };
 export const test = base.extend<TestFixtures>({
-  menuPage: async ({ page }, use) => {
-    const menuPage = new MenuPage(page);
+  pageWithCookieHandling: async ({ page }, use) => {
+    // Set up cookie preferences before any page navigation
+    await page.route("**/*", async (route) => {
+      await route.continue();
+    });
+
+    // Add cookie handling to page context
+    await page.addInitScript(() => {
+      // Prevent cookie banners from appearing by setting preferences early
+      const cookieSettings = [
+        "cookieConsent",
+        "cookie-consent",
+        "cookies-accepted",
+        "greggs-cookies",
+        "onetrust-consent",
+        "CookieConsent",
+      ];
+
+      cookieSettings.forEach((key) => {
+        localStorage.setItem(key, "rejected");
+        localStorage.setItem(key + "-rejected", "true");
+        localStorage.setItem(key + "-timestamp", Date.now().toString());
+      });
+    });
+
+    await use(page);
+  },
+
+  menuPage: async ({ pageWithCookieHandling }, use) => {
+    const menuPage = new MenuPage(pageWithCookieHandling);
     await use(menuPage);
   },
-  menuItemModal: async ({ page }, use) => {
-    const menuItemModal = new MenuItemModal(page);
+  menuItemModal: async ({ pageWithCookieHandling }, use) => {
+    const menuItemModal = new MenuItemModal(pageWithCookieHandling);
     await use(menuItemModal);
   },
 });
