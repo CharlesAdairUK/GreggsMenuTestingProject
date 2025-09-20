@@ -13,6 +13,7 @@ export class MenuPage extends BasePage {
   readonly errorMessage: Locator;
 
   // Category-specific locators
+  readonly allSection: Locator;
   readonly breakfastSection: Locator;
   readonly savouriesSection: Locator;
   readonly pizzasSection: Locator;
@@ -27,9 +28,9 @@ export class MenuPage extends BasePage {
   readonly glutenFreeFilter: Locator;
 
   readonly expectedCategories = [
+    "ALL",
     "Breakfast",
     "Savouries & Bakes",
-    "Pizzas",
     "Sandwiches & Salads",
     "Drinks & Snacks",
     "Sweet Treats",
@@ -50,9 +51,10 @@ export class MenuPage extends BasePage {
       '.category-link, [data-testid="category-link"]'
     );
     this.filterButtons = page.locator('.filter-button, [data-testid="filter"]');
-    this.menuGrid = page.locator(
-      '.menu-grid, [data-testid="menu-grid"], .product-grid'
-    );
+    //this.menuGrid = page.locator(
+    //'.menu-grid, [data-testid="menu-grid"], .product-grid'
+    //);
+    this.menuGrid = page.locator('button[data-component="HeaderSwitch"]');
     this.noResultsMessage = page.locator(
       '.no-results, [data-testid="no-results"], .empty-state'
     );
@@ -61,6 +63,9 @@ export class MenuPage extends BasePage {
     );
 
     // Category sections
+    this.allSection = page.locator(
+      '[data-category="all"], .all-section, section:has(h2:has-text("All"))'
+    );
     this.breakfastSection = page.locator(
       '[data-category="breakfast"], .breakfast-section, button:has-text("Breakfast"), section:has(h2:has-text("Breakfast"))'
     );
@@ -123,11 +128,19 @@ export class MenuPage extends BasePage {
     return categories;
   }
 
+  /*************  ✨ Windsurf Command 🌟  *************/
   async clickCategory(categoryName: string) {
-    const categoryLink = this.page.locator(`text="${categoryName}"`).first();
+    const categoryLink = this.page
+      .locator(`button:has-text("${categoryName}")`)
+      .first();
+    if ((await categoryLink.count()) > 0) {
+      await categoryLink.click();
+      await this.waitForPageLoad();
+    }
     await categoryLink.click();
     await this.waitForPageLoad();
   }
+  /*******  9136c143-3137-41c6-a152-fa6027e5af77  *******/
 
   async getMenuItemsCount(): Promise<number> {
     await this.waitForMenuItemsToLoad();
@@ -188,13 +201,13 @@ export class MenuPage extends BasePage {
 
   async getCategorySection(categoryName: string): Promise<Locator> {
     const categoryMap: { [key: string]: Locator } = {
-      Breakfast: this.breakfastSection,
       "Savouries & Bakes": this.savouriesSection,
-      Pizzas: this.pizzasSection,
       "Sandwiches & Salads": this.sandwichesSection,
       "Drinks & Snacks": this.drinksSection,
       "Sweet Treats": this.sweetTreatsSection,
       "Hot Food": this.hotFoodSection,
+      ALL: this.allSection,
+      Breakfast: this.breakfastSection,
     };
 
     return (

@@ -62,8 +62,21 @@ test.describe("Error Handling Tests", () => {
     await menuPage.waitForMenuItemsToLoad();
 
     // Should still display menu items with placeholder or alt text
+
+    // Check that each menu item has either a placeholder or alt text
     const itemsCount = await menuPage.getMenuItemsCount();
-    expect(itemsCount).toBeGreaterThan(0);
+    for (let i = 0; i < itemsCount; i++) {
+      const image = menuPage.menuItems.nth(i).locator("img");
+      const isVisible = await image.isVisible();
+      const altText = await image.getAttribute("alt");
+      const hasPlaceholder =
+        (await menuPage.menuItems
+          .nth(i)
+          .locator(".image-placeholder")
+          .count()) > 0;
+
+      expect(isVisible || hasPlaceholder || !!altText).toBe(true);
+    }
   });
 
   test("should recover from API failures", async ({ page, menuPage }) => {
@@ -71,12 +84,25 @@ test.describe("Error Handling Tests", () => {
     await page.route("**/api/**", (route) => route.abort());
     await menuPage.goto();
 
+    // During API failure, menu items should NOT load
+    const failedItemsCount = await page.locator("a[data-test-card]").count();
+    expect(failedItemsCount).toBe(0);
+
     // Remove route to simulate recovery
     await page.unroute("**/api/**");
-    await page.reload();
 
+    // Reload the page and wait for network to be idle
+    await page.goto(page.url(), { waitUntil: "networkidle" });
+
+    // Optionally, check for error message and dismiss if present
+    if (await menuPage.isErrorMessageVisible()) {
+      // Optionally reload again or interact with error UI
+      await page.reload({ waitUntil: "networkidle" });
+    }
+
+    // Wait for menu items to load
     await menuPage.waitForMenuItemsToLoad();
-    const itemsCount = await menuPage.getMenuItemsCount();
-    expect(itemsCount).toBeGreaterThan(0);
+    const recoveredItemsCount = await menuPage.getMenuItemsCount();
+    expect(recoveredItemsCount).toBeGreaterThan(0);
   });
 });

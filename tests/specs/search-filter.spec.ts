@@ -87,9 +87,13 @@ test.describe("Search and Filter Tests", () => {
     await menuPage.searchForItem("coffee");
     const searchValue = await menuPage.searchInput.inputValue();
 
+    await page.waitForTimeout(2000);
+
     // Navigate to a category and back
-    await menuPage.clickCategory("Breakfast");
-    await page.goBack();
+    await menuPage.clickCategory("Sweet Treats");
+    await page.waitForTimeout(2000);
+    await page.goBack({ waitUntil: "networkidle" });
+    await menuPage.waitForMenuItemsToLoad();
 
     const currentSearchValue = await menuPage.searchInput.inputValue();
     expect(currentSearchValue).toBe(searchValue);

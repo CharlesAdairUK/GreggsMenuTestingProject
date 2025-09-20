@@ -1,11 +1,11 @@
 // tests/data/test-data.ts
 export const TestData = {
   categories: [
+    "All",
     "Breakfast",
     "Savouries & Bakes",
-    "Pizzas",
-    "Sandwiches & Salads",
     "Drinks & Snacks",
+    "Sandwiches & Salads",
     "Sweet Treats",
     "Hot Food",
   ],
@@ -19,10 +19,10 @@ export const TestData = {
     max: 15.0,
   },
   viewports: {
-    mobile: { width: 375, height: 667 },
-    tablet: { width: 768, height: 1024 },
-    desktop: { width: 1200, height: 800 },
-    largeDesktop: { width: 1920, height: 1080 },
+    mobile: { width: 375, height: 667, name: "Mobile" },
+    tablet: { width: 768, height: 1024, name: "Tablet" },
+    desktop: { width: 1200, height: 800, name: "Desktop" },
+    largeDesktop: { width: 1920, height: 1080, name: "Large Desktop" },
   },
   performanceThresholds: {
     pageLoadTime: 5000,

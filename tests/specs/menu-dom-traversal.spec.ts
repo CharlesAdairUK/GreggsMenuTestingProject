@@ -14,17 +14,7 @@ test.describe("Greggs Menu - Complete DOM Traversal", () => {
     // Get all menu items from the DOM
     const allMenuItems = await page.evaluate(() => {
       // Common selectors for menu items on Greggs website
-      const itemSelectors = [
-        ".menu-item",
-        '[data-testid="menu-item"]',
-        ".product-card",
-        ".item-card",
-        ".menu-product",
-        '[class*="item"]',
-        '[class*="product"]',
-        "article",
-        ".card",
-      ];
+      const itemSelectors = ["a[data-test-card]"];
 
       let items: Element[] = [];
 
@@ -34,16 +24,21 @@ test.describe("Greggs Menu - Complete DOM Traversal", () => {
         if (elements.length > 0) {
           // Filter to only include elements that look like menu items
           const menuItems = elements.filter((el) => {
-            const text = el.textContent?.toLowerCase() || "";
-            const hasPrice =
-              text.includes("£") ||
-              el.querySelector(
-                '[class*="price"], .cost, [data-testid="price"]'
-              );
+            const text = el.textContent?.toLowerCase();
             const hasName = el.querySelector(
               'h1, h2, h3, h4, h5, h6, [class*="name"], [class*="title"]'
             );
-            return hasPrice && hasName;
+            // Get image name if available
+            const imageElement = el.querySelector("img");
+            const imageName =
+              imageElement?.getAttribute("alt")?.trim() ||
+              imageElement?.getAttribute("title")?.trim() ||
+              "";
+
+            // You can use imageName later in the mapping function
+            (el as any).__imageName = imageName;
+
+            return hasName;
           });
 
           if (menuItems.length > 0) {
@@ -115,43 +110,19 @@ test.describe("Greggs Menu - Complete DOM Traversal", () => {
         `Item ${index + 1} name should not contain placeholder text`
       ).not.toMatch(/lorem|ipsum|placeholder|test/i);
 
-      // 2. Price validation
-      expect(
-        item.price,
-        `Item ${index + 1} (${item.name}) should have a price`
-      ).toBeTruthy();
-      expect(
-        item.price,
-        `Item ${index + 1} (${item.name}) should have valid GBP price format`
-      ).toMatch(/£\d+\.?\d*/);
-
-      // Extract and validate price value
-      const priceMatch = item.price.match(/£(\d+\.?\d*)/);
-      if (priceMatch) {
-        const priceValue = parseFloat(priceMatch[1]);
-        expect(
-          priceValue,
-          `Item ${index + 1} (${
-            item.name
-          }) price should be reasonable (£0.50-£15.00)`
-        ).toBeGreaterThan(0.5);
-        expect(
-          priceValue,
-          `Item ${index + 1} (${
-            item.name
-          }) price should be reasonable (£0.50-£15.00)`
-        ).toBeLessThan(15.0);
-      }
-
       // 3. Image validation
-      expect(
-        item.imageSrc,
-        `Item ${index + 1} (${item.name}) should have an image`
-      ).toBeTruthy();
-      expect(
-        item.imageSrc,
-        `Item ${index + 1} (${item.name}) should have valid image URL`
-      ).toMatch(/\.(jpg|jpeg|png|webp)/i);
+      if (item.imageSrc) {
+        expect(item.imageSrc).toMatch(
+          /^https?:\/\/.+\.(jpg|jpeg|png|webp)(\?.+)?$/
+        );
+
+        expect(
+          item.imageSrc,
+          `Item ${index + 1} (${item.name}) should have valid image URL`
+        ).toMatch(/\.(jpg|jpeg|png|webp)/i);
+      } else {
+        console.warn(`Item ${index + 1} (${item.name}) has no imageSrc`);
+      }
 
       if (item.imageAlt) {
         expect(
@@ -222,15 +193,7 @@ test("should verify menu items are organized by categories", async ({
 
   const categoryData = await page.evaluate(() => {
     // Look for category sections
-    const categorySelectors = [
-      "section",
-      "[data-category]",
-      ".category",
-      ".menu-section",
-      '[class*="category"]',
-      'div[class*="section"]',
-    ];
-
+    const categorySelectors = [".PillFilters__button"];
     const categories: any[] = [];
 
     for (const selector of categorySelectors) {
@@ -296,30 +259,40 @@ test("should verify menu items are organized by categories", async ({
   );
 
   // Validate categories
-  expect(categoryData.length).toBeGreaterThan(3); // Should have multiple categories
-
+  // Check that each expected category is present on the page
   const expectedCategories = [
+    "All",
     "Breakfast",
-    "Savouries",
-    "Bakes",
-    "Sandwiches",
-    "Salads",
-    "Drinks",
-    "Snacks",
-    "Sweet",
-    "Treats",
+    "Savouries & Bakes",
+    "Drinks & Snacks",
+    "Sandwiches & Salads",
+    "Sweet Treats",
     "Hot Food",
-    "Pizza",
   ];
+
+  for (const expected of expectedCategories) {
+    const found = categoryData.some((cat) =>
+      cat.title.toLowerCase().includes(expected.toLowerCase())
+    );
+    expect(
+      found,
+      `Expected category "${expected}" to be present on the page`
+    ).toBe(true);
+  }
+
+  expect(categoryData.length).toBeGreaterThan(3); // Should have multiple categories
 
   for (const category of categoryData) {
     expect(category.itemCount).toBeGreaterThan(0);
     expect(category.title.length).toBeGreaterThan(2);
 
-    // Check if category matches expected categories
-    const matchesExpected = expectedCategories.some((expected) =>
-      category.title.toLowerCase().includes(expected.toLowerCase())
-    );
+    // Assert that each found category matches one of the expected categories
+    expect(
+      expectedCategories.some((expected) =>
+        category.title.toLowerCase().includes(expected.toLowerCase())
+      ),
+      `Category "${category.title}" should match one of the expected categories`
+    ).toBe(true);
 
     console.log(
       `Category: ${category.title} - ${

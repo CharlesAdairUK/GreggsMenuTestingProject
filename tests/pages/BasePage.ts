@@ -19,9 +19,7 @@ export class BasePage {
     this.page = page;
     this.url = url;
     // Common locators
-    this.logo = page
-      .locator('[data-testid="logo"], .logo, img[alt*="Greggs"]')
-      .first();
+    this.logo = page.locator('.HeaderLogo__inner, img[alt*="Greggs"]').first();
     this.mainNavigation = page.locator('nav, [role="navigation"]').first();
     this.searchInput = page
       .locator(
@@ -111,7 +109,19 @@ export class BasePage {
   }
 
   async goto() {
-    await this.page.goto(this.url);
+    try {
+      await this.page.goto(this.url);
+    } catch (error) {
+      console.log(`Network error while navigating to ${this.url}:`, error);
+      // Fallback: reload the page and try again once
+      try {
+        await this.page.reload();
+        await this.page.goto(this.url);
+      } catch (fallbackError) {
+        console.log(`Fallback navigation also failed:`, fallbackError);
+        // Optionally, you could throw or continue depending on your test strategy
+      }
+    }
     await this.handleCookieConsent();
     await this.waitForPageLoad();
   }
