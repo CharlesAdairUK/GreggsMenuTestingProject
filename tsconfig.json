@@ -14,7 +14,7 @@
 
     "outDir": "dist",
 
-    "types": ["@playwright/test"],
+    "types": ["@playwright/test", "node"],
 
     "ignoreDeprecations": "6.0"
   },
