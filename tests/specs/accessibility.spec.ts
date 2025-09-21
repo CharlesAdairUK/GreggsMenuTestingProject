@@ -8,7 +8,7 @@ test.describe("Accessibility Tests", () => {
     await menuPage.waitForMenuItemsToLoad();
   });
 
-  test("should support keyboard navigation", async ({ page, menuPage }) => {
+  test("should support keyboard navigation", async ({ page }) => {
     // Test tab navigation
     await page.keyboard.press("Tab");
     let focusedElement = page.locator(":focus");
@@ -32,7 +32,7 @@ test.describe("Accessibility Tests", () => {
     if ((await nav.count()) > 0) {
       const ariaLabel = await nav.getAttribute("aria-label");
       const role = await nav.getAttribute("role");
-      expect(ariaLabel || role).toBeTruthy();
+      expect(!!(ariaLabel || role)).toBe(true);
     }
 
     // Check menu items have proper labels
@@ -40,27 +40,50 @@ test.describe("Accessibility Tests", () => {
     if ((await menuItemElement.count()) > 0) {
       const hasAriaLabel = await menuItemElement.getAttribute("aria-label");
       const hasRole = await menuItemElement.getAttribute("role");
-      expect(hasAriaLabel || hasRole).toBeTruthy();
+      expect(!!(hasAriaLabel || hasRole)).toBe(true);
     } else {
-      // Fail the test if no menu items are found
       throw new Error("No menu items found to check ARIA attributes.");
     }
   });
 
-  test("should have sufficient color contrast", async ({ page, menuPage }) => {
-    const menuItemElement = page.locator("a[data-test-card]").first();
-    const nameColor = await TestHelpers.getComputedStyle(
-      menuItemElement,
-      "color"
-    );
-    const priceElement = menuItemElement.locator("[data-test-card-price]");
-    const priceColor = await TestHelpers.getComputedStyle(
-      priceElement,
-      "color"
-    );
+  test("should have sufficient color contrast for colorblind and visually impaired users", async ({
+    page,
+  }) => {
+    const menuItemElements = page.locator("a[data-test-card]");
+    const count = await menuItemElements.count();
+    expect(count).toBeGreaterThan(0);
 
-    expect(nameColor).toMatch(/rgb\(\d+,\s*\d+,\s*\d+\)/);
-    expect(priceColor).toMatch(/rgb\(\d+,\s*\d+,\s*\d+\)/);
+    for (let i = 0; i < count; i++) {
+      const menuItemElement = menuItemElements.nth(i);
+      const nameElement = menuItemElement.locator("[data-test-card-name]");
+
+      // Get colors and backgrounds
+      const nameColor = await TestHelpers.getComputedStyle(
+        nameElement,
+        "color"
+      );
+      const nameBg = await TestHelpers.getComputedStyle(
+        nameElement,
+        "background-color"
+      );
+
+      // Check color format
+      expect(nameColor).toMatch(/rgb\(\d+,\s*\d+,\s*\d+\)/);
+
+      // Calculate contrast ratio
+      const nameContrast = TestHelpers.getContrastRatio(nameColor, nameBg);
+
+      // WCAG AA minimum contrast ratio for normal text is 4.5:1
+      expect(nameContrast).toBeGreaterThanOrEqual(4.5);
+
+      // Check for colorblind-friendly indicators (e.g., icons, patterns)
+      const colorblindIndicator = menuItemElement.locator(
+        "[data-colorblind-indicator]"
+      );
+      if ((await colorblindIndicator.count()) > 0) {
+        await expect(colorblindIndicator.first()).toBeVisible();
+      }
+    }
   });
 
   test("should have proper heading structure", async ({ page }) => {
@@ -81,7 +104,7 @@ test.describe("Accessibility Tests", () => {
       const alt = await item.image.getAttribute("alt");
       const ariaLabel = await item.image.getAttribute("aria-label");
 
-      expect(alt || ariaLabel).toBeTruthy();
+      expect(!!(alt || ariaLabel)).toBe(true);
 
       if (alt) {
         expect(alt.length).toBeGreaterThan(0);
@@ -106,7 +129,7 @@ test.describe("Accessibility Tests", () => {
     }
   });
 
-  test("should have focus indicators", async ({ page, menuPage }) => {
+  test("should have focus indicators", async ({ page }) => {
     await page.keyboard.press("Tab");
     const focusedElement = page.locator(":focus");
 

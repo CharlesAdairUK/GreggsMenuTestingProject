@@ -10,7 +10,6 @@ export const TestData = {
     "Hot Food",
   ],
   searchTerms: {
-    valid: ["sausage roll", "coffee", "sandwich", "pizza"],
     invalid: ["xyznonexistent", "!@#$%", ""],
     breakfast: ["bacon", "egg", "hash brown", "breakfast roll"],
   },

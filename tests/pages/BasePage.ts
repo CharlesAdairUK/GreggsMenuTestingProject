@@ -27,7 +27,7 @@ export class BasePage {
       )
       .first();
     this.loadingSpinner = page.locator(
-      '.loading, .spinner, [data-testid="loading"]'
+      '.loading, .spinner, [data-testid="loading"], .nuxtLoading'
     );
 
     // Cookie consent locators (multiple possible selectors)

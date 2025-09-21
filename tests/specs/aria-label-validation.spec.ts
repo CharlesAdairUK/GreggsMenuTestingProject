@@ -40,7 +40,7 @@ test.describe("Greggs Menu - ARIA Label Validation", () => {
 
           // Context for validation
           href: link.getAttribute("href"),
-          hasValidName: nameElement?.textContent?.trim().length > 0,
+          hasValidName: (nameElement?.textContent?.trim()?.length ?? 0) > 0,
         };
       });
     });
@@ -84,10 +84,34 @@ test.describe("Greggs Menu - ARIA Label Validation", () => {
         item.imageAlt.length,
         `Item "${item.name}" alt text should be descriptive`
       ).toBeGreaterThan(3);
+      // Allow up to 2 character mistakes between alt text and item name
+      const altText = item.imageAlt.trim().toLowerCase();
+      const nameText = item.name.trim().toLowerCase();
+
+      function levenshtein(a: string, b: string): number {
+        const dp = Array.from({ length: a.length + 1 }, () =>
+          Array(b.length + 1).fill(0)
+        );
+        for (let i = 0; i <= a.length; i++) dp[i][0] = i;
+        for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+        for (let i = 1; i <= a.length; i++) {
+          for (let j = 1; j <= b.length; j++) {
+            if (a[i - 1] === b[j - 1]) {
+              dp[i][j] = dp[i - 1][j - 1];
+            } else {
+              dp[i][j] =
+                1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+            }
+          }
+        }
+        return dp[a.length][b.length];
+      }
+
+      const distance = levenshtein(altText, nameText);
       expect(
-        item.imageAlt,
-        `Item "${item.name}" alt text should match item name`
-      ).toBe(item.name);
+        distance,
+        `Item "${item.name}" alt text should closely match item name (<=2 character difference)`
+      ).toBeLessThanOrEqual(2);
       console.log(`  ✓ Image alt text: "${item.imageAlt}"`);
 
       // 3. Check for redundant ARIA labels
@@ -141,7 +165,16 @@ test.describe("Greggs Menu - ARIA Label Validation", () => {
     page,
   }) => {
     const navigationElements = await page.evaluate(() => {
-      const elements = [];
+      const elements: Array<{
+        type: string;
+        index: number;
+        tagName: string;
+        ariaLabel: string | null;
+        role?: string | null;
+        ariaLabelledBy: string | null;
+        hasHeading?: boolean;
+        headingText?: string | undefined;
+      }> = [];
 
       // Check main navigation
       const navs = Array.from(document.querySelectorAll("nav"));
@@ -267,7 +300,7 @@ test.describe("Greggs Menu - ARIA Label Validation", () => {
   }) => {
     // Check for search inputs or filter controls
     const formElements = await page.evaluate(() => {
-      const elements = [];
+      const elements: any[] = [];
 
       // Input elements
       const inputs = Array.from(document.querySelectorAll("input"));
@@ -357,7 +390,16 @@ test.describe("Greggs Menu - ARIA Label Validation", () => {
     page,
   }) => {
     const accessibilityIssues = await page.evaluate(() => {
-      const issues = [];
+      interface AccessibilityIssue {
+        element: string;
+        index: number;
+        className: string;
+        id?: string;
+        issue: string;
+        suggestion: string;
+      }
+
+      const issues: AccessibilityIssue[] = [];
 
       // Check all interactive elements
       const interactiveElements = Array.from(

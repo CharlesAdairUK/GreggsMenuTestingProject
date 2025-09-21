@@ -7,7 +7,7 @@ export class MenuPage extends BasePage {
   readonly menuCategories: Locator;
   readonly menuItems: Locator;
   readonly categoryLinks: Locator;
-  readonly filterButtons: Locator;
+  readonly filterButtons!: Locator;
   readonly menuGrid: Locator;
   readonly noResultsMessage: Locator;
   readonly errorMessage: Locator;
@@ -44,9 +44,8 @@ export class MenuPage extends BasePage {
     this.menuCategories = page.locator(
       '.menu-category, [data-testid="menu-category"]'
     );
-    this.menuItems = page.locator(
-      '.menu-item, [data-testid="menu-item"], .product-card'
-    );
+
+    this.menuItems = page.locator("a[data-test-card]");
     this.categoryLinks = page.locator(
       '.category-link, [data-testid="category-link"]'
     );
@@ -59,13 +58,14 @@ export class MenuPage extends BasePage {
       '.no-results, [data-testid="no-results"], .empty-state'
     );
     this.errorMessage = page.locator(
-      '.error, [data-testid="error"], .network-error'
+      '.error, [data-testid="error"], .network-error, h2:has-text("Oh crumbs!")'
     );
 
     // Category sections
     this.allSection = page.locator(
       '[data-category="all"], .all-section, section:has(h2:has-text("All"))'
     );
+
     this.breakfastSection = page.locator(
       '[data-category="breakfast"], .breakfast-section, button:has-text("Breakfast"), section:has(h2:has-text("Breakfast"))'
     );
@@ -145,6 +145,16 @@ export class MenuPage extends BasePage {
   async getMenuItemsCount(): Promise<number> {
     await this.waitForMenuItemsToLoad();
     return await this.menuItems.count();
+  }
+
+  async dismissErrorMessage(): Promise<void> {
+    // Example: Click a button with a known selector to dismiss the error message
+    const dismissButton = this.page.locator(
+      '.error-message-dismiss, .error-close, button:has-text("Dismiss")'
+    );
+    if (await dismissButton.isVisible()) {
+      await dismissButton.click();
+    }
   }
 
   async getMenuItemByIndex(index: number): Promise<MenuItemElement> {
@@ -282,6 +292,8 @@ export class MenuItemElement {
       .locator('.out-of-stock, [data-stock="false"], .unavailable')
       .first();
   }
+
+  // Removed duplicate MenuPage class definition
 
   async click(): Promise<MenuItemModal> {
     await this.element.click();

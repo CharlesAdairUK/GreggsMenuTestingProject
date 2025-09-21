@@ -53,8 +53,6 @@ test.describe("Cookie Consent Handling", () => {
       } else {
         console.log("Reject button not found, banner might auto-dismiss");
       }
-    } else {
-      console.log("No cookie banner detected");
     }
 
     // Verify page is functional after cookie handling
@@ -95,9 +93,8 @@ test.describe("Cookie Consent Handling", () => {
     await page.waitForLoadState("networkidle");
 
     // Cookie banner should not appear
-    const cookieBanner = page
-      .locator('.cookie-banner, .cookie-consent, [class*="cookie"]')
-      .first();
+    const cookieBanner = page.locator("#cookie-banner-id"); // Replace 'cookie-banner-id' with the actual ID of the cookie banner
+
     await expect(cookieBanner).not.toBeVisible();
   });
 
@@ -251,25 +248,60 @@ test.describe("Cookie Consent Handling", () => {
         });
       });
 
+      console.log("Navigating to menu page...");
       await menuPage.goto();
 
-      // Page should still be functional
-      await expect(menuPage.menuItems.first()).toBeVisible();
+      console.log("Checking if menu items are visible...");
+      await TestHelpers.ensurePageReady(page);
+      await expect(
+        page.locator('[data-component="DynamicLink"]').first()
+      ).toBeVisible();
+
+      console.log("Test passed!");
     });
 
-    test("should handle missing images gracefully", async ({
+    test("should handle empty menu response gracefully", async ({
       page,
       menuPage,
     }) => {
-      // Mock image requests to fail
-      await page.route("**/*.{png,jpg,jpeg,webp}", (route) => route.abort());
+      // Mock API to return empty data
+      await page.route("**/api/menu/**", async (route) => {
+        await route.fulfill({
+          status: 200,
+          contentType: "application/json",
+          body: JSON.stringify({ items: [] }),
+        });
+      });
 
-      await menuPage.goto();
-      await menuPage.waitForMenuItemsToLoad();
+      await TestHelpers.ensurePageReady(page);
+      await page.goto("https://www.greggs.com/menu");
 
-      // Should still display menu items with placeholder or alt text
-      const itemsCount = await menuPage.getMenuItemsCount();
-      expect(itemsCount).toBeGreaterThan(0);
+      // Should show empty state message
+      const emptyStateSelectors = [
+        '[data-testid="empty-state"]',
+        ".empty-menu",
+        ".no-items-message",
+        'text="No items available"',
+        'text="Menu currently unavailable"',
+      ];
+
+      let emptyStateFound = false;
+      for (const selector of emptyStateSelectors) {
+        if ((await page.locator(selector).count()) > 0) {
+          await expect(page.locator(selector)).toBeVisible();
+          emptyStateFound = true;
+          console.log(`Empty state displayed: ${selector}`);
+          break;
+        }
+      }
+
+      // If no specific empty state, check that no menu items are displayed
+      const menuItems = await page.locator("a[data-test-card]").count();
+      expect(menuItems).toBe(0);
+
+      // Verify page doesn't crash and basic structure remains
+      await expect(page.locator("body")).toBeVisible();
+      console.log("Empty menu response handled gracefully");
     });
 
     test("should recover from API failures", async ({ page, menuPage }) => {

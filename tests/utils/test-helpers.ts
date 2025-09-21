@@ -87,6 +87,40 @@ export class TestHelpers {
     }, property);
   }
 
+  // static async getComputedStyle(
+  //   locator: any,
+  //   property: string
+  // ): Promise<string> {
+  //   // Implementation...
+  // }
+
+  // Calculates contrast ratio between two rgb colors
+  static getContrastRatio(foreground: string, background: string): number {
+    function parseRGB(rgb: string): number[] {
+      const match = rgb.match(/\d+/g);
+      if (!match || match.length < 3) return [0, 0, 0];
+      return match.slice(0, 3).map(Number);
+    }
+
+    function luminance([r, g, b]: number[]): number {
+      const a = [r, g, b].map(function (v) {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      });
+      return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+    }
+
+    const fgRGB = parseRGB(foreground);
+    const bgRGB = parseRGB(background);
+    const fgLum = luminance(fgRGB);
+    const bgLum = luminance(bgRGB);
+
+    const brightest = Math.max(fgLum, bgLum);
+    const darkest = Math.min(fgLum, bgLum);
+
+    return (brightest + 0.05) / (darkest + 0.05);
+  }
+
   static async generateRandomString(length: number): Promise<string> {
     const chars =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
