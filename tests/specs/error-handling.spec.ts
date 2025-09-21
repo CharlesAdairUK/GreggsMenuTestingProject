@@ -86,9 +86,7 @@ test.describe("Error Handling Tests", () => {
 
     // Remove route to simulate recovery
     await page.unroute("**/api/**");
-
-    // Force a hard reload to trigger new API requests
-    await page.reload({ waitUntil: "networkidle" });
+    await page.reload();
 
     await menuPage.waitForMenuItemsToLoad();
     const itemsCount = await menuPage.getMenuItemsCount();
