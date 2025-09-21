@@ -21,7 +21,7 @@ export default defineConfig({
     video: "retain-on-failure",
     actionTimeout: 10000,
     navigationTimeout: 130000,
-    headless: false,
+    headless: true,
     extraHTTPHeaders: {
       Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     },
