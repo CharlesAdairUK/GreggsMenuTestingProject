@@ -2,10 +2,11 @@
   "name": "greggs-menu-tests",
   "version": "1.0.0",
   "scripts": {
+    "bootstrap": "npm install && npx playwright install --with-deps",
     "test": "playwright test",
+    "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
-    "test:ui": "playwright test --ui",
     "test:cookies": "playwright test tests/specs/cookie-consent.spec.ts",
     "test:mobile": "playwright test --project='Mobile Chrome'",
     "test:desktop": "playwright test --project='Desktop Chrome'",
@@ -27,6 +28,11 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0",
+    "prettier": "^3.6.2",
     "typescript": "^5.0.0"
-  }
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.10.2"
+  },
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
