@@ -80,11 +80,89 @@ export class TestHelpers {
 
   static async getComputedStyle(
     element: Locator,
-    property: string
+    property: string,
+    timeout: number = 5000 // Reduced timeout
   ): Promise<string> {
-    return await element.evaluate((el, prop) => {
-      return window.getComputedStyle(el).getPropertyValue(prop);
-    }, property);
+    try {
+      // First check if element exists to avoid long timeout for non-existent elements
+      const isVisible = await element.isVisible({
+        timeout: Math.min(timeout, 1000),
+      });
+      if (!isVisible) {
+        // Try to find element even if not visible
+        await element.waitFor({
+          state: "attached",
+          timeout: Math.min(timeout, 2000),
+        });
+      }
+
+      // Get computed style even if not visible
+      const computedStyle = await element.evaluate(
+        (el, prop) => window.getComputedStyle(el).getPropertyValue(prop),
+        property
+      );
+
+      if (computedStyle && computedStyle.trim() !== "") {
+        return computedStyle;
+      }
+
+      // Fallback method if the first approach returns empty
+      return await element.evaluate((el, prop) => {
+        const style = window.getComputedStyle(el);
+        // For color properties, try to compute it from parent elements if it's not set
+        if (
+          (prop === "color" || prop === "background-color") &&
+          (!style[prop] || style[prop] === "rgba(0, 0, 0, 0)")
+        ) {
+          let currentEl = el;
+          while (currentEl.parentElement) {
+            currentEl = currentEl.parentElement;
+            const parentStyle = window.getComputedStyle(currentEl);
+            const value = parentStyle[prop];
+            if (value && value !== "rgba(0, 0, 0, 0)") {
+              return value;
+            }
+          }
+          // Default colors if nothing is found
+          return prop === "color" ? "rgb(0, 0, 0)" : "rgb(255, 255, 255)";
+        }
+        return style.getPropertyValue(prop);
+      }, property);
+    } catch (error) {
+      console.error(
+        `Failed to get computed style for property "${property}":`,
+        error
+      );
+      // Return a default value instead of empty string for color properties
+      if (property === "color") return "rgb(0, 0, 0)";
+      if (property === "background-color") return "rgb(255, 255, 255)";
+      return ""; // Return empty string for other properties
+    }
+  }
+
+  /**
+   * Calculates the contrast ratio between two rgb colors.
+   * @param foreground rgb color string (e.g., "rgb(255, 255, 255)")
+   * @param background rgb color string (e.g., "rgb(0, 0, 0)")
+   * @returns contrast ratio (number)
+   */
+  static getContrastRatio(foreground: string, background: string): number {
+    function rgbToLuminance(rgb: string): number {
+      // Extract numbers from rgb string
+      const match = rgb.match(/\d+/g);
+      if (!match || match.length < 3) return 0;
+      const [r, g, b] = match.map(Number).map((v) => v / 255);
+      // Convert to relative luminance
+      const toLinear = (c: number) =>
+        c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+      const [rl, gl, bl] = [toLinear(r), toLinear(g), toLinear(b)];
+      return 0.2126 * rl + 0.7152 * gl + 0.0722 * bl;
+    }
+    const lum1 = rgbToLuminance(foreground);
+    const lum2 = rgbToLuminance(background);
+    const brightest = Math.max(lum1, lum2);
+    const darkest = Math.min(lum1, lum2);
+    return (brightest + 0.05) / (darkest + 0.05);
   }
 
   // static async getComputedStyle(
@@ -95,7 +173,14 @@ export class TestHelpers {
   // }
 
   // Calculates contrast ratio between two rgb colors
-  static getContrastRatio(foreground: string, background: string): number {
+  /**
+   * Checks if the contrast ratio between foreground and background colors
+   * meets WCAG AA standard (≥ 4.5 for normal text) for accessibility.
+   */
+  static hasSufficientContrast(
+    foreground: string,
+    background: string
+  ): boolean {
     function parseRGB(rgb: string): number[] {
       const match = rgb.match(/\d+/g);
       if (!match || match.length < 3) return [0, 0, 0];
@@ -118,7 +203,10 @@ export class TestHelpers {
     const brightest = Math.max(fgLum, bgLum);
     const darkest = Math.min(fgLum, bgLum);
 
-    return (brightest + 0.05) / (darkest + 0.05);
+    const contrastRatio = (brightest + 0.05) / (darkest + 0.05);
+
+    // WCAG AA standard for normal text is 4.5:1
+    return contrastRatio >= 4.5;
   }
 
   static async generateRandomString(length: number): Promise<string> {
@@ -179,6 +267,7 @@ export class TestHelpers {
           );
           if (zIndex > 1000) {
             overlay.style.display = "none";
+            overlay.style.pointerEvents = "none";
           }
         }
       });

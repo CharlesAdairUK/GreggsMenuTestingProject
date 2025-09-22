@@ -184,82 +184,14 @@ test.describe("Greggs Menu - Complete DOM Traversal", () => {
   });
 });
 
-test("should verify menu items are organized by categories", async ({
+test("should verify menu category selection displays correct section", async ({
   page,
 }) => {
   await TestHelpers.ensurePageReady(page);
   await page.goto("https://www.greggs.com/menu");
   await page.waitForLoadState("networkidle");
 
-  const categoryData = await page.evaluate(() => {
-    // Look for category sections
-    const categorySelectors = [".PillFilters__button"];
-    const categories: any[] = [];
-
-    for (const selector of categorySelectors) {
-      const sections = Array.from(document.querySelectorAll(selector));
-
-      for (const section of sections) {
-        // Look for category title
-        const titleElement = section.querySelector("h1, h2, h3, h4, h5, h6");
-        if (!titleElement) continue;
-
-        const title = titleElement.textContent?.trim();
-        if (!title) continue;
-
-        // Look for menu items within this section
-        const itemSelectors = [
-          ".menu-item",
-          ".product-card",
-          '[class*="item"]',
-        ];
-        let items: Element[] = [];
-
-        for (const itemSelector of itemSelectors) {
-          const sectionItems = Array.from(
-            section.querySelectorAll(itemSelector)
-          );
-          if (sectionItems.length > 0) {
-            items = sectionItems.filter((item) => {
-              const hasPrice =
-                item.textContent?.includes("£") ||
-                item.querySelector('[class*="price"]');
-              return hasPrice;
-            });
-            break;
-          }
-        }
-
-        if (items.length > 0) {
-          categories.push({
-            title,
-            itemCount: items.length,
-            items: items.slice(0, 3).map((item) => {
-              // First 3 items as sample
-              const nameEl = item.querySelector(
-                'h1, h2, h3, h4, h5, h6, [class*="name"]'
-              );
-              return nameEl?.textContent?.trim() || "Unknown";
-            }),
-          });
-        }
-      }
-
-      if (categories.length > 0) break;
-    }
-
-    return categories;
-  });
-
-  console.log(
-    "Found categories:",
-    categoryData
-      .map((cat) => `${cat.title} (${cat.itemCount} items)`)
-      .join(", ")
-  );
-
-  // Validate categories
-  // Check that each expected category is present on the page
+  // The expected categories as shown on the Greggs menu page
   const expectedCategories = [
     "All",
     "Breakfast",
@@ -270,35 +202,55 @@ test("should verify menu items are organized by categories", async ({
     "Hot Food",
   ];
 
-  for (const expected of expectedCategories) {
-    const found = categoryData.some((cat) =>
-      cat.title.toLowerCase().includes(expected.toLowerCase())
+  for (const category of expectedCategories) {
+    // Locate the category tab/button by its text
+    const tab = page
+      .locator(`button:has-text("${category}"), a:has-text("${category}")`)
+      .first();
+    await expect(
+      tab,
+      `Category tab "${category}" should be visible`
+    ).toBeVisible();
+
+    // Click the category tab if visible
+    try {
+      if (await tab.isVisible()) {
+        await tab.scrollIntoViewIfNeeded();
+        await tab.click();
+        await page.waitForTimeout(500); // Wait for UI to update
+      } else {
+        throw new Error(`Category tab "${category}" not found or not visible`);
+      }
+    } catch (error) {
+      console.error(
+        `Error interacting with category tab "${category}":`,
+        error
+      );
+      // Optionally, you can fail the test here if needed
+      throw error;
+    }
+
+    // Find the visible section for the selected category
+    const section = page
+      .locator(
+        `[class*="menu-category"]:visible, [class*="MenuCategory"]:visible, [data-testid*="category"]:visible, section:visible`
+      )
+      .filter({ hasText: category });
+
+    await expect(
+      section,
+      `Section for "${category}" should be visible after selecting`
+    ).toBeVisible();
+
+    // Optionally, check that there are menu items in the section
+    const items = section.locator(
+      "a[data-test-card], .menu-item, .product-card"
     );
+    const itemCount = await items.count();
     expect(
-      found,
-      `Expected category "${expected}" to be present on the page`
-    ).toBe(true);
-  }
-
-  expect(categoryData.length).toBeGreaterThan(3); // Should have multiple categories
-
-  for (const category of categoryData) {
-    expect(category.itemCount).toBeGreaterThan(0);
-    expect(category.title.length).toBeGreaterThan(2);
-
-    // Assert that each found category matches one of the expected categories
-    expect(
-      expectedCategories.some((expected) =>
-        category.title.toLowerCase().includes(expected.toLowerCase())
-      ),
-      `Category "${category.title}" should match one of the expected categories`
-    ).toBe(true);
-
-    console.log(
-      `Category: ${category.title} - ${
-        category.itemCount
-      } items - Sample: ${category.items.join(", ")}`
-    );
+      itemCount,
+      `Section "${category}" should have menu items`
+    ).toBeGreaterThanOrEqual(1);
   }
 });
 
@@ -308,20 +260,10 @@ test("should validate menu item accessibility features", async ({ page }) => {
   await page.waitForLoadState("networkidle");
 
   const accessibilityData = await page.evaluate(() => {
-    const itemSelectors = [
-      ".menu-item",
-      '[data-testid="menu-item"]',
-      ".product-card",
-    ];
-    let items: Element[] = [];
-
-    for (const selector of itemSelectors) {
-      items = Array.from(document.querySelectorAll(selector));
-      if (items.length > 0) break;
-    }
+    // Use the most reliable selector for Greggs menu items
+    const items = Array.from(document.querySelectorAll("a[data-test-card]"));
 
     return items.slice(0, 5).map((item, index) => {
-      // Check first 5 items
       const img = item.querySelector("img") as HTMLImageElement;
       const nameEl = item.querySelector("h1, h2, h3, h4, h5, h6");
       const links = item.querySelectorAll("a, button");

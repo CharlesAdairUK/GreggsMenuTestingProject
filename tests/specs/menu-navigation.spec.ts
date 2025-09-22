@@ -1,15 +1,18 @@
 // tests/specs/menu-navigation.spec.ts
 import { test, expect } from "../fixtures/test-fixtures";
 import { TestData } from "../data/test-data";
+import { TestHelpers } from "../utils/test-helpers";
 
 test.describe("Menu Display Tests", () => {
-  test.beforeEach(async ({ menuPage }) => {
+  test.beforeEach(async ({ menuPage, page }) => {
     await menuPage.goto();
     await menuPage.waitForMenuItemsToLoad();
+    await TestHelpers.ensurePageReady(page);
   });
 
   test("should display all main menu categories", async ({ menuPage }) => {
     const visibleCategories = await menuPage.getAllCategoryNames();
+    console.log("Visible Categories:", visibleCategories);
 
     expect(visibleCategories).toEqual(TestData.categories);
   });

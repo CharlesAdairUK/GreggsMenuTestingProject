@@ -262,6 +262,19 @@ test.describe("Greggs Menu - ARIA Label Validation", () => {
   test("should check menu item interaction states have ARIA support", async ({
     page,
   }) => {
+    // Dismiss cookie banner if present
+    const cookieBanner = page.locator('button:has-text("Accept all cookies")');
+    if (await cookieBanner.isVisible()) {
+      await cookieBanner.click();
+      // Wait for banner to disappear
+      await page
+        .waitForSelector("div#onetrust-consent-sdk", {
+          state: "hidden",
+          timeout: 5000,
+        })
+        .catch(() => {});
+    }
+
     // Get the first few menu items for interaction testing
     const menuItems = await page.locator("a[data-test-card]").all();
     const itemsToTest = Math.min(menuItems.length, 3);
@@ -282,6 +295,47 @@ test.describe("Greggs Menu - ARIA Label Validation", () => {
           ariaCurrent: element.getAttribute("aria-current"),
         };
       });
+
+      // Report missing ARIA attributes
+      const missingAria: string[] = [];
+      for (const key of Object.keys(interactionAria)) {
+        if (interactionAria[key as keyof typeof interactionAria] === null) {
+          missingAria.push(key);
+        }
+      }
+      if (missingAria.length > 0) {
+        console.log(
+          `⚠ Menu item ${testId} is missing ARIA attributes: ${missingAria.join(
+            ", "
+          )}`
+        );
+      }
+
+      // If any ARIA states are present, validate they have appropriate values
+      for (const [key, value] of Object.entries(interactionAria)) {
+        if (value !== null) {
+          switch (key) {
+            case "ariaExpanded":
+            case "ariaPressed":
+            case "ariaSelected":
+              expect(["true", "false"]).toContain(value);
+              break;
+            case "ariaCurrent":
+              expect([
+                "page",
+                "step",
+                "location",
+                "date",
+                "time",
+                "true",
+                "false",
+              ]).toContain(value);
+              break;
+            default:
+              break;
+          }
+        }
+      }
 
       // If any ARIA states are present, validate they have appropriate values
       if (interactionAria.ariaExpanded !== null) {

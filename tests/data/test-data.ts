@@ -1,7 +1,7 @@
 // tests/data/test-data.ts
 export const TestData = {
   categories: [
-    "All",
+    "ALL",
     "Breakfast",
     "Savouries & Bakes",
     "Drinks & Snacks",

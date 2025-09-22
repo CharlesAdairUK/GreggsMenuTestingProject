@@ -32,17 +32,34 @@ test.describe("Accessibility Tests", () => {
     if ((await nav.count()) > 0) {
       const ariaLabel = await nav.getAttribute("aria-label");
       const role = await nav.getAttribute("role");
+      if (!ariaLabel) {
+        console.warn("Navigation is missing aria-label attribute.");
+      }
+      if (!role) {
+        console.warn("Navigation is missing role attribute.");
+      }
       expect(!!(ariaLabel || role)).toBe(true);
     }
 
     // Check menu items have proper labels
-    const menuItemElement = page.locator("a[data-test-card]").first();
-    if ((await menuItemElement.count()) > 0) {
+    const menuItemElements = page.locator("a[data-test-card]");
+    const count = await menuItemElements.count();
+    if (count === 0) {
+      throw new Error("No menu items found to check ARIA attributes.");
+    }
+    for (let i = 0; i < count; i++) {
+      const menuItemElement = menuItemElements.nth(i);
       const hasAriaLabel = await menuItemElement.getAttribute("aria-label");
       const hasRole = await menuItemElement.getAttribute("role");
+      if (!hasAriaLabel) {
+        console.warn(
+          `Menu item at index ${i} is missing aria-label attribute.`
+        );
+      }
+      if (!hasRole) {
+        console.warn(`Menu item at index ${i} is missing role attribute.`);
+      }
       expect(!!(hasAriaLabel || hasRole)).toBe(true);
-    } else {
-      throw new Error("No menu items found to check ARIA attributes.");
     }
   });
 
@@ -68,7 +85,9 @@ test.describe("Accessibility Tests", () => {
       );
 
       // Check color format
-      expect(nameColor).toMatch(/rgb\(\d+,\s*\d+,\s*\d+\)/);
+      expect(nameColor).toMatch(
+        /rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*(?:,\s*[\d\.]+\s*)?\)/
+      );
 
       // Calculate contrast ratio
       const nameContrast = TestHelpers.getContrastRatio(nameColor, nameBg);
