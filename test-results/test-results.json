@@ -1,0 +1,1003 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\playwright.config.ts",
+    "rootDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/tests/specs",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 5
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/test-results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/test-results.xml"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/tests/specs",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 130000
+      },
+      {
+        "outputDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/tests/specs",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 130000
+      },
+      {
+        "outputDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "safari",
+        "name": "safari",
+        "testDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/tests/specs",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 130000
+      },
+      {
+        "outputDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "mobile chrome",
+        "name": "mobile chrome",
+        "testDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/tests/specs",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 130000
+      },
+      {
+        "outputDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "mobile safari",
+        "name": "mobile safari",
+        "testDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/tests/specs",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 130000
+      },
+      {
+        "outputDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "tablet",
+        "name": "tablet",
+        "testDir": "C:/Users/charl/Downloads/GreggsMenuTesting/GreggsMenuTestingTemp/tests/specs",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 130000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "3way",
+    "version": "1.55.0",
+    "workers": 5,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "performance.spec.ts",
+      "file": "performance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Performance Tests",
+          "file": "performance.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should reject cookies before performance test",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 45,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 998,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Starting cookie consent handling...\n"
+                        },
+                        {
+                          "text": "No cookie banner detected\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:12.693Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-c4aaa51bcd3abe4e94bb",
+              "file": "performance.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "should load menu page within acceptable time",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 46,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 10564,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m5000\u001b[39m\nReceived:   \u001b[31m9332\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m5000\u001b[39m\nReceived:   \u001b[31m9332\u001b[39m\n    at C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts:18:22",
+                        "location": {
+                          "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                          "column": 22,
+                          "line": 18
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 16 |\u001b[39m     \u001b[90m// Handle cookies first\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[33mTestHelpers\u001b[39m\u001b[33m.\u001b[39mensurePageReady\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m     expect(loadTime)\u001b[33m.\u001b[39mtoBeLessThan(\u001b[33mTestData\u001b[39m\u001b[33m.\u001b[39mperformanceThresholds\u001b[33m.\u001b[39mpageLoadTime)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[90m// Essential content should be visible\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                            "column": 22,
+                            "line": 18
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m5000\u001b[39m\nReceived:   \u001b[31m9332\u001b[39m\n\n\u001b[0m \u001b[90m 16 |\u001b[39m     \u001b[90m// Handle cookies first\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[33mTestHelpers\u001b[39m\u001b[33m.\u001b[39mensurePageReady\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m     expect(loadTime)\u001b[33m.\u001b[39mtoBeLessThan(\u001b[33mTestData\u001b[39m\u001b[33m.\u001b[39mperformanceThresholds\u001b[33m.\u001b[39mpageLoadTime)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[90m// Essential content should be visible\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[0m\n\u001b[2m    at C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts:18:22\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Starting cookie consent handling...\n"
+                        },
+                        {
+                          "text": "No cookie banner detected\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:12.642Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-c6575-page-within-acceptable-time-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-c6575-page-within-acceptable-time-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-c6575-page-within-acceptable-time-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                        "column": 22,
+                        "line": 18
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-9311fb4f82bcfef7cfe7",
+              "file": "performance.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should handle large numbers of menu items efficiently",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 47,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 16599,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Cookie banner detected, attempting to reject cookies...\n"
+                        },
+                        {
+                          "text": "Rejected cookies successfully\n"
+                        },
+                        {
+                          "text": "No cookie banner detected\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:12.535Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-0cbc77759e153f99c6ee",
+              "file": "performance.spec.ts",
+              "line": 44,
+              "column": 7
+            },
+            {
+              "title": "should optimize Core Web Vitals",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 48,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 14391,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Cookie banner detected, attempting to reject cookies...\n"
+                        },
+                        {
+                          "text": "Rejected cookies successfully\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:12.596Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-c02c364da4ac5981945a",
+              "file": "performance.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should handle slow network conditions",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 49,
+                      "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 18029,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m16685\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m16685\u001b[39m\n    at C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts:99:22",
+                        "location": {
+                          "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                          "column": 22,
+                          "line": 99
+                        },
+                        "snippet": "\u001b[0m \u001b[90m  97 |\u001b[39m\n \u001b[90m  98 |\u001b[39m     \u001b[90m// Should still load within reasonable time even on slow network\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  99 |\u001b[39m     expect(loadTime)\u001b[33m.\u001b[39mtoBeLessThan(\u001b[35m10000\u001b[39m)\u001b[33m;\u001b[39m \u001b[90m// 10 seconds max for slow network\u001b[39m\n \u001b[90m     |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 100 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 101 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 102 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                            "column": 22,
+                            "line": 99
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m16685\u001b[39m\n\n\u001b[0m \u001b[90m  97 |\u001b[39m\n \u001b[90m  98 |\u001b[39m     \u001b[90m// Should still load within reasonable time even on slow network\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  99 |\u001b[39m     expect(loadTime)\u001b[33m.\u001b[39mtoBeLessThan(\u001b[35m10000\u001b[39m)\u001b[33m;\u001b[39m \u001b[90m// 10 seconds max for slow network\u001b[39m\n \u001b[90m     |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 100 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 101 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 102 |\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts:99:22\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Cookie banner detected, attempting to reject cookies...\n"
+                        },
+                        {
+                          "text": "Rejected cookies successfully\n"
+                        },
+                        {
+                          "text": "No cookie banner detected\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:12.555Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-89c9c-dle-slow-network-conditions-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-89c9c-dle-slow-network-conditions-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-89c9c-dle-slow-network-conditions-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                        "column": 22,
+                        "line": 99
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-cdd72defbc401a762c7a",
+              "file": "performance.spec.ts",
+              "line": 88,
+              "column": 7
+            },
+            {
+              "title": "should reject cookies before performance test",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "safari",
+                  "projectName": "safari",
+                  "results": [
+                    {
+                      "workerIndex": 50,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1524,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Starting cookie consent handling...\n"
+                        },
+                        {
+                          "text": "No cookie banner detected\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:21.180Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-95ec294c91e7c0a35659",
+              "file": "performance.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "should load menu page within acceptable time",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "safari",
+                  "projectName": "safari",
+                  "results": [
+                    {
+                      "workerIndex": 50,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8714,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m5000\u001b[39m\nReceived:   \u001b[31m6813\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m5000\u001b[39m\nReceived:   \u001b[31m6813\u001b[39m\n    at C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts:18:22",
+                        "location": {
+                          "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                          "column": 22,
+                          "line": 18
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 16 |\u001b[39m     \u001b[90m// Handle cookies first\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[33mTestHelpers\u001b[39m\u001b[33m.\u001b[39mensurePageReady\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m     expect(loadTime)\u001b[33m.\u001b[39mtoBeLessThan(\u001b[33mTestData\u001b[39m\u001b[33m.\u001b[39mperformanceThresholds\u001b[33m.\u001b[39mpageLoadTime)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[90m// Essential content should be visible\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                            "column": 22,
+                            "line": 18
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m5000\u001b[39m\nReceived:   \u001b[31m6813\u001b[39m\n\n\u001b[0m \u001b[90m 16 |\u001b[39m     \u001b[90m// Handle cookies first\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[33mTestHelpers\u001b[39m\u001b[33m.\u001b[39mensurePageReady\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m     expect(loadTime)\u001b[33m.\u001b[39mtoBeLessThan(\u001b[33mTestData\u001b[39m\u001b[33m.\u001b[39mperformanceThresholds\u001b[33m.\u001b[39mpageLoadTime)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[90m// Essential content should be visible\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[0m\n\u001b[2m    at C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts:18:22\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Starting cookie consent handling...\n"
+                        },
+                        {
+                          "text": "No cookie banner detected\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:23.323Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-c6575-page-within-acceptable-time-safari\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-c6575-page-within-acceptable-time-safari\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-c6575-page-within-acceptable-time-safari\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                        "column": 22,
+                        "line": 18
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-2691b2780462248939e0",
+              "file": "performance.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should handle large numbers of menu items efficiently",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "safari",
+                  "projectName": "safari",
+                  "results": [
+                    {
+                      "workerIndex": 51,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 12502,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "No cookie banner detected\n"
+                        },
+                        {
+                          "text": "Cookie banner detected, attempting to reject cookies...\n"
+                        },
+                        {
+                          "text": "Rejected cookies successfully\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:26.003Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-80d960cf4e96a7fcbee8",
+              "file": "performance.spec.ts",
+              "line": 44,
+              "column": 7
+            },
+            {
+              "title": "should optimize Core Web Vitals",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "safari",
+                  "projectName": "safari",
+                  "results": [
+                    {
+                      "workerIndex": 52,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 13262,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "No cookie banner detected\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:31.163Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-ff6e26a6974b0bced517",
+              "file": "performance.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should handle slow network conditions",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "safari",
+                  "projectName": "safari",
+                  "results": [
+                    {
+                      "workerIndex": 53,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 15387,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m14217\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m14217\u001b[39m\n    at C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts:99:22",
+                        "location": {
+                          "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                          "column": 22,
+                          "line": 99
+                        },
+                        "snippet": "\u001b[0m \u001b[90m  97 |\u001b[39m\n \u001b[90m  98 |\u001b[39m     \u001b[90m// Should still load within reasonable time even on slow network\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  99 |\u001b[39m     expect(loadTime)\u001b[33m.\u001b[39mtoBeLessThan(\u001b[35m10000\u001b[39m)\u001b[33m;\u001b[39m \u001b[90m// 10 seconds max for slow network\u001b[39m\n \u001b[90m     |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 100 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 101 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 102 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                            "column": 22,
+                            "line": 99
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m14217\u001b[39m\n\n\u001b[0m \u001b[90m  97 |\u001b[39m\n \u001b[90m  98 |\u001b[39m     \u001b[90m// Should still load within reasonable time even on slow network\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  99 |\u001b[39m     expect(loadTime)\u001b[33m.\u001b[39mtoBeLessThan(\u001b[35m10000\u001b[39m)\u001b[33m;\u001b[39m \u001b[90m// 10 seconds max for slow network\u001b[39m\n \u001b[90m     |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 100 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 101 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 102 |\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts:99:22\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "No cookie banner detected\n"
+                        },
+                        {
+                          "text": "Cookie banner detected, attempting to reject cookies...\n"
+                        },
+                        {
+                          "text": "Rejected cookies successfully\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:32.130Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-89c9c-dle-slow-network-conditions-safari\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-89c9c-dle-slow-network-conditions-safari\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-89c9c-dle-slow-network-conditions-safari\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                        "column": 22,
+                        "line": 99
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-9c2b17e7d0ca9672c670",
+              "file": "performance.spec.ts",
+              "line": 88,
+              "column": 7
+            },
+            {
+              "title": "should reject cookies before performance test",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile chrome",
+                  "projectName": "mobile chrome",
+                  "results": [
+                    {
+                      "workerIndex": 54,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 997,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Starting cookie consent handling...\n"
+                        },
+                        {
+                          "text": "No cookie banner detected\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:33.282Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-cbcec44fe172373f13b4",
+              "file": "performance.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "should load menu page within acceptable time",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile chrome",
+                  "projectName": "mobile chrome",
+                  "results": [
+                    {
+                      "workerIndex": 55,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5647,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Starting cookie consent handling...\n"
+                        },
+                        {
+                          "text": "No cookie banner detected\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:34.262Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-e4c31c63338049679e74",
+              "file": "performance.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should handle large numbers of menu items efficiently",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile chrome",
+                  "projectName": "mobile chrome",
+                  "results": [
+                    {
+                      "workerIndex": 54,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 12093,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "No cookie banner detected\n"
+                        },
+                        {
+                          "text": "Cookie banner detected, attempting to reject cookies...\n"
+                        },
+                        {
+                          "text": "Rejected cookies successfully\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:34.519Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-8a2ef0d4e1b794ab0e45",
+              "file": "performance.spec.ts",
+              "line": 44,
+              "column": 7
+            },
+            {
+              "title": "should optimize Core Web Vitals",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile chrome",
+                  "projectName": "mobile chrome",
+                  "results": [
+                    {
+                      "workerIndex": 56,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 8663,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Cookie banner detected, attempting to reject cookies...\n"
+                        },
+                        {
+                          "text": "Rejected cookies successfully\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:41.455Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-06ac7fc2256269291a36",
+              "file": "performance.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should handle slow network conditions",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 130000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile chrome",
+                  "projectName": "mobile chrome",
+                  "results": [
+                    {
+                      "workerIndex": 55,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 11780,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m11031\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m11031\u001b[39m\n    at C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts:99:22",
+                        "location": {
+                          "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                          "column": 22,
+                          "line": 99
+                        },
+                        "snippet": "\u001b[0m \u001b[90m  97 |\u001b[39m\n \u001b[90m  98 |\u001b[39m     \u001b[90m// Should still load within reasonable time even on slow network\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  99 |\u001b[39m     expect(loadTime)\u001b[33m.\u001b[39mtoBeLessThan(\u001b[35m10000\u001b[39m)\u001b[33m;\u001b[39m \u001b[90m// 10 seconds max for slow network\u001b[39m\n \u001b[90m     |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 100 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 101 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 102 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                            "column": 22,
+                            "line": 99
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m11031\u001b[39m\n\n\u001b[0m \u001b[90m  97 |\u001b[39m\n \u001b[90m  98 |\u001b[39m     \u001b[90m// Should still load within reasonable time even on slow network\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  99 |\u001b[39m     expect(loadTime)\u001b[33m.\u001b[39mtoBeLessThan(\u001b[35m10000\u001b[39m)\u001b[33m;\u001b[39m \u001b[90m// 10 seconds max for slow network\u001b[39m\n \u001b[90m     |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 100 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 101 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 102 |\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts:99:22\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Cookie banner detected, attempting to reject cookies...\n"
+                        },
+                        {
+                          "text": "Rejected cookies successfully\n"
+                        },
+                        {
+                          "text": "No cookie banner detected\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-23T07:33:40.150Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-89c9c-dle-slow-network-conditions-mobile-chrome\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-89c9c-dle-slow-network-conditions-mobile-chrome\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\test-results\\performance-Performance-Te-89c9c-dle-slow-network-conditions-mobile-chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\charl\\Downloads\\GreggsMenuTesting\\GreggsMenuTestingTemp\\tests\\specs\\performance.spec.ts",
+                        "column": 22,
+                        "line": 99
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "b15d6361b2fc38288977-bad9f116348bb656957a",
+              "file": "performance.spec.ts",
+              "line": 88,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-09-23T07:33:10.089Z",
+    "duration": 41988.46200000006,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

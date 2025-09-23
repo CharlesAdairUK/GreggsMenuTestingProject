@@ -1,5 +1,5 @@
 // tests/utils/test-helpers.ts
-import { Page, Locator, expect } from "@playwright/test";
+import { Page, Locator } from "@playwright/test";
 import { CookieHelper } from "./cookie-helper";
 
 export class TestHelpers {

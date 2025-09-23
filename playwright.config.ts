@@ -1,13 +1,15 @@
 // playwright.config.ts
 import { defineConfig, devices } from "@playwright/test";
 
+const IS_CI = process.env.CI === "true";
+
 export default defineConfig({
   testDir: "./tests/specs",
   fullyParallel: true,
   timeout: 130000,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  forbidOnly: IS_CI,
+  retries: IS_CI ? 2 : 0,
+  workers: IS_CI ? 1 : undefined,
   reporter: [
     ["html"],
     ["json", { outputFile: "test-results/test-results.json" }],
@@ -21,57 +23,35 @@ export default defineConfig({
     video: "retain-on-failure",
     actionTimeout: 10000,
     navigationTimeout: 130000,
-    headless: false,
     extraHTTPHeaders: {
       Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     },
   },
 
-  // Global setup for cookie handling
-  globalSetup: require.resolve("./tests/utils/global-setup.ts"),
-
   projects: [
     {
-      name: "Setup & Cookie Handling",
-      testMatch: "**/cookie-consent.spec.ts",
-      use: { ...devices["Desktop Chrome"] },
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
     },
     {
-      name: "Desktop Chrome",
-      use: { ...devices["Desktop Chrome"] },
-      dependencies: ["Setup & Cookie Handling"],
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
     },
     {
-      name: "Desktop Firefox",
-      use: { ...devices["Desktop Firefox"] },
-      dependencies: ["Setup & Cookie Handling"],
+      name: 'safari',
+      use: { ...devices['Desktop Safari'] },
     },
     {
-      name: "Desktop Safari",
-      use: { ...devices["Desktop Safari"] },
-      dependencies: ["Setup & Cookie Handling"],
+      name: 'mobile chrome',
+      use: { ...devices['Pixel 5'] },
     },
     {
-      name: "Mobile Chrome",
-      use: { ...devices["Pixel 5"] },
-      dependencies: ["Setup & Cookie Handling"],
+      name: 'mobile safari',
+      use: { ...devices['iPhone 12'] },
     },
     {
-      name: "Mobile Safari",
-      use: { ...devices["iPhone 12"] },
-      dependencies: ["Setup & Cookie Handling"],
-    },
-    {
-      name: "Tablet",
-      use: { ...devices["iPad Pro"] },
-      dependencies: ["Setup & Cookie Handling"],
-    },
+      name: 'tablet',
+      use: { ...devices['iPad Pro'] },
+    }
   ],
-
-  // webServer: {
-  //   command: "npm run start-test-server",
-  //   port: 3000,
-  //   reuseExistingServer: !process.env.CI,
-  //   timeout: 120 * 1000,
-  // },
 });

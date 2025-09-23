@@ -66,6 +66,7 @@ test.describe("Performance Tests", () => {
   test("should optimize Core Web Vitals", async ({ page, menuPage }) => {
     await menuPage.goto();
 
+    // Largest Contentful Paint
     const lcp = await page.evaluate(() => {
       return new Promise<number>((resolve) => {
         const observer = new PerformanceObserver((entryList) => {

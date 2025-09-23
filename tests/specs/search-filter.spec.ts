@@ -1,7 +1,8 @@
 // tests/specs/search-filter.spec.ts
-import { test, expect } from "../fixtures/test-fixtures";
+import { expect } from "../fixtures/test-fixtures";
 import { TestData } from "../data/test-data";
-import { TestHelpers } from "../utils/test-helpers";
+
+import { test } from "../test-utils";
 
 test.describe("Search and Filter Tests", () => {
   test.beforeEach(async ({ menuPage }) => {
@@ -10,10 +11,20 @@ test.describe("Search and Filter Tests", () => {
   });
 
   test("should show search bar", async ({ menuPage }) => {
-    const searchBar = menuPage.searchInput;
-    if ((await searchBar.count()) > 0) {
-      await expect(searchBar).toBeVisible();
-    }
+    await expect(menuPage.searchInput).toBeVisible();
+  });
+
+  test("should open and close filters modal via keyboard", async ({ page }) => {
+    const filterButton = await page.locator('button[data-test="filterButton"]');
+
+    // Button is not in an accessible group so for the purpose of keyboard navigation, we are focusing the button
+    // programmatically
+    await filterButton.focus();
+    await filterButton.press("Enter");
+
+    await expect(page.getByRole('dialog')).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(page.getByRole('dialog')).toBeHidden();
   });
 
   test("should filter items using search functionality", async ({

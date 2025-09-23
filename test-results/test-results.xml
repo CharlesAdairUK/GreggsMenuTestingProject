@@ -1,0 +1,288 @@
+<testsuites id="" name="" tests="15" failures="5" skipped="0" errors="0" time="41.988462000000055">
+<testsuite name="performance.spec.ts" timestamp="2025-09-23T07:33:11.351Z" hostname="chromium" tests="5" failures="2" skipped="0" time="60.581" errors="0">
+<testcase name="Performance Tests › should reject cookies before performance test" classname="performance.spec.ts" time="0.998">
+<system-out>
+<![CDATA[Starting cookie consent handling...
+No cookie banner detected
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should load menu page within acceptable time" classname="performance.spec.ts" time="10.564">
+<failure message="performance.spec.ts:11:7 should load menu page within acceptable time" type="FAILURE">
+<![CDATA[  [chromium] › performance.spec.ts:11:7 › Performance Tests › should load menu page within acceptable time 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 5000
+    Received:   9332
+
+      16 |     // Handle cookies first
+      17 |     TestHelpers.ensurePageReady;
+    > 18 |     expect(loadTime).toBeLessThan(TestData.performanceThresholds.pageLoadTime);
+         |                      ^
+      19 |
+      20 |     // Essential content should be visible
+      21 |     await expect(
+        at C:\Users\charl\Downloads\GreggsMenuTesting\GreggsMenuTestingTemp\tests\specs\performance.spec.ts:18:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\performance-Performance-Te-c6575-page-within-acceptable-time-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\performance-Performance-Te-c6575-page-within-acceptable-time-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\performance-Performance-Te-c6575-page-within-acceptable-time-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[Starting cookie consent handling...
+No cookie banner detected
+
+[[ATTACHMENT|performance-Performance-Te-c6575-page-within-acceptable-time-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|performance-Performance-Te-c6575-page-within-acceptable-time-chromium\video.webm]]
+
+[[ATTACHMENT|performance-Performance-Te-c6575-page-within-acceptable-time-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should handle large numbers of menu items efficiently" classname="performance.spec.ts" time="16.599">
+<system-out>
+<![CDATA[Cookie banner detected, attempting to reject cookies...
+Rejected cookies successfully
+No cookie banner detected
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should optimize Core Web Vitals" classname="performance.spec.ts" time="14.391">
+<system-out>
+<![CDATA[Cookie banner detected, attempting to reject cookies...
+Rejected cookies successfully
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should handle slow network conditions" classname="performance.spec.ts" time="18.029">
+<failure message="performance.spec.ts:88:7 should handle slow network conditions" type="FAILURE">
+<![CDATA[  [chromium] › performance.spec.ts:88:7 › Performance Tests › should handle slow network conditions 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 10000
+    Received:   16685
+
+       97 |
+       98 |     // Should still load within reasonable time even on slow network
+    >  99 |     expect(loadTime).toBeLessThan(10000); // 10 seconds max for slow network
+          |                      ^
+      100 |   });
+      101 | });
+      102 |
+        at C:\Users\charl\Downloads\GreggsMenuTesting\GreggsMenuTestingTemp\tests\specs\performance.spec.ts:99:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\performance-Performance-Te-89c9c-dle-slow-network-conditions-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\performance-Performance-Te-89c9c-dle-slow-network-conditions-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\performance-Performance-Te-89c9c-dle-slow-network-conditions-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[Cookie banner detected, attempting to reject cookies...
+Rejected cookies successfully
+No cookie banner detected
+
+[[ATTACHMENT|performance-Performance-Te-89c9c-dle-slow-network-conditions-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|performance-Performance-Te-89c9c-dle-slow-network-conditions-chromium\video.webm]]
+
+[[ATTACHMENT|performance-Performance-Te-89c9c-dle-slow-network-conditions-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="performance.spec.ts" timestamp="2025-09-23T07:33:11.351Z" hostname="safari" tests="5" failures="2" skipped="0" time="51.389" errors="0">
+<testcase name="Performance Tests › should reject cookies before performance test" classname="performance.spec.ts" time="1.524">
+<system-out>
+<![CDATA[Starting cookie consent handling...
+No cookie banner detected
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should load menu page within acceptable time" classname="performance.spec.ts" time="8.714">
+<failure message="performance.spec.ts:11:7 should load menu page within acceptable time" type="FAILURE">
+<![CDATA[  [safari] › performance.spec.ts:11:7 › Performance Tests › should load menu page within acceptable time 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 5000
+    Received:   6813
+
+      16 |     // Handle cookies first
+      17 |     TestHelpers.ensurePageReady;
+    > 18 |     expect(loadTime).toBeLessThan(TestData.performanceThresholds.pageLoadTime);
+         |                      ^
+      19 |
+      20 |     // Essential content should be visible
+      21 |     await expect(
+        at C:\Users\charl\Downloads\GreggsMenuTesting\GreggsMenuTestingTemp\tests\specs\performance.spec.ts:18:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\performance-Performance-Te-c6575-page-within-acceptable-time-safari\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\performance-Performance-Te-c6575-page-within-acceptable-time-safari\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\performance-Performance-Te-c6575-page-within-acceptable-time-safari\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[Starting cookie consent handling...
+No cookie banner detected
+
+[[ATTACHMENT|performance-Performance-Te-c6575-page-within-acceptable-time-safari\test-failed-1.png]]
+
+[[ATTACHMENT|performance-Performance-Te-c6575-page-within-acceptable-time-safari\video.webm]]
+
+[[ATTACHMENT|performance-Performance-Te-c6575-page-within-acceptable-time-safari\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should handle large numbers of menu items efficiently" classname="performance.spec.ts" time="12.502">
+<system-out>
+<![CDATA[No cookie banner detected
+Cookie banner detected, attempting to reject cookies...
+Rejected cookies successfully
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should optimize Core Web Vitals" classname="performance.spec.ts" time="13.262">
+<system-out>
+<![CDATA[No cookie banner detected
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should handle slow network conditions" classname="performance.spec.ts" time="15.387">
+<failure message="performance.spec.ts:88:7 should handle slow network conditions" type="FAILURE">
+<![CDATA[  [safari] › performance.spec.ts:88:7 › Performance Tests › should handle slow network conditions ──
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 10000
+    Received:   14217
+
+       97 |
+       98 |     // Should still load within reasonable time even on slow network
+    >  99 |     expect(loadTime).toBeLessThan(10000); // 10 seconds max for slow network
+          |                      ^
+      100 |   });
+      101 | });
+      102 |
+        at C:\Users\charl\Downloads\GreggsMenuTesting\GreggsMenuTestingTemp\tests\specs\performance.spec.ts:99:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\performance-Performance-Te-89c9c-dle-slow-network-conditions-safari\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\performance-Performance-Te-89c9c-dle-slow-network-conditions-safari\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\performance-Performance-Te-89c9c-dle-slow-network-conditions-safari\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[No cookie banner detected
+Cookie banner detected, attempting to reject cookies...
+Rejected cookies successfully
+
+[[ATTACHMENT|performance-Performance-Te-89c9c-dle-slow-network-conditions-safari\test-failed-1.png]]
+
+[[ATTACHMENT|performance-Performance-Te-89c9c-dle-slow-network-conditions-safari\video.webm]]
+
+[[ATTACHMENT|performance-Performance-Te-89c9c-dle-slow-network-conditions-safari\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="performance.spec.ts" timestamp="2025-09-23T07:33:11.351Z" hostname="mobile chrome" tests="5" failures="1" skipped="0" time="39.18" errors="0">
+<testcase name="Performance Tests › should reject cookies before performance test" classname="performance.spec.ts" time="0.997">
+<system-out>
+<![CDATA[Starting cookie consent handling...
+No cookie banner detected
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should load menu page within acceptable time" classname="performance.spec.ts" time="5.647">
+<system-out>
+<![CDATA[Starting cookie consent handling...
+No cookie banner detected
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should handle large numbers of menu items efficiently" classname="performance.spec.ts" time="12.093">
+<system-out>
+<![CDATA[No cookie banner detected
+Cookie banner detected, attempting to reject cookies...
+Rejected cookies successfully
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should optimize Core Web Vitals" classname="performance.spec.ts" time="8.663">
+<system-out>
+<![CDATA[Cookie banner detected, attempting to reject cookies...
+Rejected cookies successfully
+]]>
+</system-out>
+</testcase>
+<testcase name="Performance Tests › should handle slow network conditions" classname="performance.spec.ts" time="11.78">
+<failure message="performance.spec.ts:88:7 should handle slow network conditions" type="FAILURE">
+<![CDATA[  [mobile chrome] › performance.spec.ts:88:7 › Performance Tests › should handle slow network conditions 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 10000
+    Received:   11031
+
+       97 |
+       98 |     // Should still load within reasonable time even on slow network
+    >  99 |     expect(loadTime).toBeLessThan(10000); // 10 seconds max for slow network
+          |                      ^
+      100 |   });
+      101 | });
+      102 |
+        at C:\Users\charl\Downloads\GreggsMenuTesting\GreggsMenuTestingTemp\tests\specs\performance.spec.ts:99:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\performance-Performance-Te-89c9c-dle-slow-network-conditions-mobile-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\performance-Performance-Te-89c9c-dle-slow-network-conditions-mobile-chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\performance-Performance-Te-89c9c-dle-slow-network-conditions-mobile-chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[Cookie banner detected, attempting to reject cookies...
+Rejected cookies successfully
+No cookie banner detected
+
+[[ATTACHMENT|performance-Performance-Te-89c9c-dle-slow-network-conditions-mobile-chrome\test-failed-1.png]]
+
+[[ATTACHMENT|performance-Performance-Te-89c9c-dle-slow-network-conditions-mobile-chrome\video.webm]]
+
+[[ATTACHMENT|performance-Performance-Te-89c9c-dle-slow-network-conditions-mobile-chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
