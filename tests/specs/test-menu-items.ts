@@ -169,7 +169,7 @@ test.describe('Greggs Menu Items - DOM Optimized', () => {
   test('should interact with specific menu items using data-test-card', async ({
     page,
   }) => {
-    //await TestHelpers.ensurePageReady(page) TestHelpers.ensurePageReady(page);
+    //await TestHelpers.ensurePageReady(page)
     await page.goto('https://www.greggs.com/menu')
     await page.waitForLoadState('networkidle')
 
