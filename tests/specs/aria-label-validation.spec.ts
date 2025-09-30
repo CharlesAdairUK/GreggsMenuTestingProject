@@ -1,12 +1,9 @@
 // tests/specs/aria-label-validation.spec.ts
-import { expect } from '@playwright/test'
-import { test } from '../test-utils'
-
-import { TestHelpers } from '../utils/test-helpers'
+import { test, expect } from '../fixtures/../test-utils'
 
 test.describe('Greggs Menu - ARIA Label Validation', () => {
   test.beforeEach(async ({ page }) => {
-    await TestHelpers.ensurePageReady(page)
+    // await TestHelpers.ensurePageReady(page)
     await page.goto('https://www.greggs.com/menu')
     await page.waitForSelector('a[data-test-card]', { timeout: 15000 })
   })
@@ -262,19 +259,6 @@ test.describe('Greggs Menu - ARIA Label Validation', () => {
   test('should check menu item interaction states have ARIA support', async ({
     page,
   }) => {
-    // Dismiss cookie banner if present
-    const cookieBanner = page.locator('button:has-text("Accept all cookies")')
-    if (await cookieBanner.isVisible()) {
-      await cookieBanner.click()
-      // Wait for banner to disappear
-      await page
-        .waitForSelector('div#onetrust-consent-sdk', {
-          state: 'hidden',
-          timeout: 5000,
-        })
-        .catch(() => {})
-    }
-
     // Get the first few menu items for interaction testing
     const menuItems = await page.locator('a[data-test-card]').all()
     const itemsToTest = Math.min(menuItems.length, 3)

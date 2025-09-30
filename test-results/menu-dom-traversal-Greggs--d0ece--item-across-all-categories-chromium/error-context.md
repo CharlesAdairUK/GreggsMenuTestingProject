@@ -1,0 +1,253 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "Greggs homepage" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8] [cursor=pointer]:
+          - generic [ref=e9] [cursor=pointer]: Greggs homepage
+          - img [ref=e10] [cursor=pointer]
+          - img [ref=e12] [cursor=pointer]
+      - navigation "Main site navigation" [ref=e17]:
+        - list [ref=e19]:
+          - listitem [ref=e20]:
+            - generic [ref=e21]:
+              - button "Menu & allergens" [ref=e22] [cursor=pointer]:
+                - text: Menu & allergens
+                - generic [ref=e24] [cursor=pointer]:
+                  - img [ref=e26] [cursor=pointer]
+                  - img [ref=e29] [cursor=pointer]
+              - generic:
+                - generic:
+                  - list:
+                    - listitem:
+                      - link "A bacon roll with ketchup Breakfast":
+                        - /url: /menu?category=breakfast
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img "A bacon roll with ketchup"
+                        - generic: Breakfast
+                    - listitem:
+                      - link "A Greggs bake Savouries & Bakes":
+                        - /url: /menu?category=savouries-bakes
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img "A Greggs bake"
+                        - generic: Savouries & Bakes
+                    - listitem:
+                      - link "A cup of freshly ground Greggs coffee Drinks & Snacks":
+                        - /url: /menu?category=drinks-snacks
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img "A cup of freshly ground Greggs coffee"
+                        - generic: Drinks & Snacks
+                    - listitem:
+                      - link "A chicken salad sandwich Sandwiches & Salads":
+                        - /url: /menu?category=sandwiches-salads
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img "A chicken salad sandwich"
+                        - generic: Sandwiches & Salads
+                    - listitem:
+                      - link "A sugar strand doughnut Sweet Treats":
+                        - /url: /menu?category=sweet-treats
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img "A sugar strand doughnut"
+                        - generic: Sweet Treats
+                    - listitem:
+                      - link "A box of Greggs BBQ chicken bites Hot Food":
+                        - /url: /menu?category=hot-food
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img "A box of Greggs BBQ chicken bites"
+                        - generic: Hot Food
+                    - listitem:
+                      - generic:
+                        - generic:
+                          - link "View all products":
+                            - /url: /menu
+                        - generic:
+                          - link "Allergens & Nutrition":
+                            - /url: /nutrition
+          - listitem [ref=e31]:
+            - link "Find a shop" [ref=e32] [cursor=pointer]:
+              - /url: /shop-finder
+          - listitem [ref=e33]:
+            - link "Ways to order" [ref=e34] [cursor=pointer]:
+              - /url: /order
+          - listitem [ref=e35]:
+            - generic [ref=e36]:
+              - button "Gift cards" [ref=e37] [cursor=pointer]:
+                - text: Gift cards
+                - generic [ref=e39] [cursor=pointer]:
+                  - img [ref=e41] [cursor=pointer]
+                  - img [ref=e44] [cursor=pointer]
+              - generic:
+                - generic:
+                  - list:
+                    - listitem:
+                      - link "Gift cards":
+                        - /url: /gift-cards/
+                        - generic: Gift cards
+                    - listitem:
+                      - link "Check gift card balance":
+                        - /url: /gift-cards#check-gift-card-balance
+                        - generic: Check gift card balance
+          - listitem [ref=e46]:
+            - link "Greggs App" [ref=e47] [cursor=pointer]:
+              - /url: /app
+          - listitem [ref=e48]:
+            - link "Doing Good" [ref=e49] [cursor=pointer]:
+              - /url: /doing-good
+          - listitem [ref=e50]:
+            - link "News" [ref=e51] [cursor=pointer]:
+              - /url: /news/
+  - main [ref=e52]:
+    - generic [ref=e53]:
+      - heading "OUR MENU Find your yummy" [level=1] [ref=e72]:
+        - generic [ref=e73]: OUR MENU
+        - generic [ref=e74]: Find your yummy
+      - img [ref=e76]
+      - status [ref=e109]:
+        - generic [ref=e110]:
+          - img [ref=e111]
+          - img [ref=e114]
+        - paragraph [ref=e116]: Baking...
+      - img [ref=e119]
+      - generic [ref=e121]:
+        - link "Find a shop" [ref=e124] [cursor=pointer]:
+          - /url: /shop-finder
+          - img
+          - paragraph [ref=e126] [cursor=pointer]:
+            - text: Find a
+            - text: shop
+            - img [ref=e127] [cursor=pointer]
+        - link "Click + Collect" [ref=e131] [cursor=pointer]:
+          - /url: /click-and-collect
+          - img
+          - paragraph [ref=e133] [cursor=pointer]:
+            - text: Click
+            - generic [ref=e134] [cursor=pointer]: +
+            - text: Collect
+            - img [ref=e135] [cursor=pointer]
+        - link "Delivery" [ref=e139] [cursor=pointer]:
+          - /url: /order/delivery
+          - img
+          - paragraph [ref=e141] [cursor=pointer]:
+            - generic [ref=e142] [cursor=pointer]:
+              - text: Delivery
+              - img [ref=e143] [cursor=pointer]
+        - link "Download the app" [ref=e147] [cursor=pointer]:
+          - /url: /app
+          - img [ref=e148] [cursor=pointer]
+          - paragraph [ref=e157] [cursor=pointer]:
+            - text: Download
+            - text: the app
+            - img [ref=e158] [cursor=pointer]
+        - img [ref=e161]
+      - img [ref=e165]
+      - generic [ref=e168]:
+        - heading "Greggs App" [level=2] [ref=e169]
+        - img "Hand holding image of newly designed app" [ref=e175]
+        - paragraph [ref=e176]: Don’t worry, be ‘appy. Our all-singing, all-dancing Greggs App is packed with some seriously tasty features. And, in our humble opinion, your phone ain’t smart without it.
+        - generic [ref=e179]:
+          - link "Download the app" [ref=e181] [cursor=pointer]:
+            - /url: https://greggs.onelink.me/0Hou/4db723mb
+          - link "Get more info" [ref=e183] [cursor=pointer]:
+            - /url: /app
+      - img [ref=e186]
+  - contentinfo [ref=e188]:
+    - generic [ref=e189]:
+      - generic [ref=e190]:
+        - heading "Fill Your Feeds With Yummy Fill your Feeds" [level=2] [ref=e191]:
+          - generic [ref=e192]: Fill Your Feeds With Yummy
+          - img "Fill your Feeds" [ref=e193]
+        - heading "Follow Greggs" [level=3] [ref=e196]
+        - navigation "Greggs Social media links navigation" [ref=e197]:
+          - list [ref=e198]:
+            - listitem [ref=e199]:
+              - link "Follow us on Facebook" [ref=e200] [cursor=pointer]:
+                - /url: https://www.facebook.com/greggsofficial
+                - generic [ref=e201] [cursor=pointer]: Facebook
+                - img [ref=e202] [cursor=pointer]
+            - listitem [ref=e204]:
+              - link "Follow us on Instagram" [ref=e205] [cursor=pointer]:
+                - /url: https://www.instagram.com/greggs_official
+                - generic [ref=e206] [cursor=pointer]: Instagram
+                - img [ref=e207] [cursor=pointer]
+            - listitem [ref=e209]:
+              - link "Follow us on X" [ref=e210] [cursor=pointer]:
+                - /url: https://twitter.com/GreggsOfficial
+                - generic [ref=e211] [cursor=pointer]: X
+                - img [ref=e212] [cursor=pointer]
+            - listitem [ref=e214]:
+              - link "Follow us on TikTok" [ref=e215] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@greggsofficial
+                - generic [ref=e216] [cursor=pointer]: TikTok
+                - img [ref=e217] [cursor=pointer]
+      - navigation "Footer navigation" [ref=e221]:
+        - list [ref=e222]:
+          - listitem [ref=e223]:
+            - link "About Us" [ref=e224] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e225]:
+            - link "Contact Us" [ref=e226] [cursor=pointer]:
+              - /url: /contact
+          - listitem [ref=e227]:
+            - link "Privacy Policy" [ref=e228] [cursor=pointer]:
+              - /url: /legals/privacy-policy
+        - list [ref=e229]:
+          - listitem [ref=e230]:
+            - link "Cookie Policy" [ref=e231] [cursor=pointer]:
+              - /url: /legals/cookie-policy
+          - listitem [ref=e232]:
+            - link "Modern Slavery Statement" [ref=e233] [cursor=pointer]:
+              - /url: https://a.storyblok.com/f/94904/x/4205c604f5/greggs-modern-slavery-statement.pdf
+          - listitem [ref=e234]:
+            - link "Pay Gap" [ref=e235] [cursor=pointer]:
+              - /url: https://a.storyblok.com/f/94904/x/bc10774e9a/greggs-pay-gap-report-2023.pdf
+        - list [ref=e236]:
+          - listitem [ref=e237]:
+            - link "Greggs Foundation" [ref=e238] [cursor=pointer]:
+              - /url: https://www.greggsfoundation.org.uk
+          - listitem [ref=e239]:
+            - link "Greggs Careers" [ref=e240] [cursor=pointer]:
+              - /url: https://careers.greggs.co.uk
+          - listitem [ref=e241]:
+            - link "Corporate" [ref=e242] [cursor=pointer]:
+              - /url: https://corporate.greggs.co.uk/
+        - list [ref=e243]:
+          - listitem [ref=e244]:
+            - link "FAQs" [ref=e245] [cursor=pointer]:
+              - /url: /faqs/
+          - listitem [ref=e246]:
+            - link "T&Cs" [ref=e247] [cursor=pointer]:
+              - /url: /legals/terms-and-conditions
+          - listitem [ref=e248]:
+            - generic [ref=e249] [cursor=pointer]: Cookie settings
+          - listitem [ref=e250]:
+            - link "Promotions and offers" [ref=e251] [cursor=pointer]:
+              - /url: /legals/promotions-and-offers
+      - paragraph [ref=e252]: Copyright © 2013 - 2025 Greggs plc
+```

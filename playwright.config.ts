@@ -1,30 +1,30 @@
 // playwright.config.ts
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig, devices } from '@playwright/test'
 
-const IS_CI = process.env.CI === "true";
+const IS_CI = process.env.CI === 'true'
 
 export default defineConfig({
-  testDir: "./tests/specs",
+  testDir: './tests/specs',
   fullyParallel: true,
   timeout: 130000,
   forbidOnly: IS_CI,
   retries: IS_CI ? 2 : 0,
   workers: IS_CI ? 1 : undefined,
   reporter: [
-    ["html"],
-    ["json", { outputFile: "test-results/test-results.json" }],
-    ["junit", { outputFile: "test-results/test-results.xml" }],
+    ['html'],
+    ['json', { outputFile: 'test-results/test-results.json' }],
+    ['junit', { outputFile: 'test-results/test-results.xml' }],
   ],
 
   use: {
-    baseURL: "https://www.greggs.com/menu",
-    trace: "on-first-retry",
-    screenshot: "only-on-failure",
-    video: "retain-on-failure",
+    baseURL: 'https://www.greggs.com/menu',
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
     actionTimeout: 10000,
     navigationTimeout: 130000,
     extraHTTPHeaders: {
-      Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     },
   },
 
@@ -52,6 +52,6 @@ export default defineConfig({
     {
       name: 'tablet',
       use: { ...devices['iPad Pro'] },
-    }
+    },
   ],
-});
+})
