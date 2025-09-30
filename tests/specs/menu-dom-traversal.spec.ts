@@ -199,6 +199,11 @@ test('should verify menu category selection displays correct section', async ({
     // Locate the category tab/button by its text
     const tab = page.locator(`[data-test-filter="${category}"]`)
 
+    // Ensure the category tab exists and is visible before interacting
+    await expect(
+      tab,
+      `Category tab for "${category}" should exist and be visible`,
+    ).toBeVisible()
     // Click the category tab if visible
     await tab.scrollIntoViewIfNeeded()
     await tab.click()
