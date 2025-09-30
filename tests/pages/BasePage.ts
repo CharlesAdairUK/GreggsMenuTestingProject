@@ -39,7 +39,6 @@ export class BasePage {
         // Optionally, you could throw or continue depending on your test strategy
       }
     }
-    // await this.handleCookieConsent()
     await this.waitForPageLoad()
   }
   async waitForPageLoad() {
