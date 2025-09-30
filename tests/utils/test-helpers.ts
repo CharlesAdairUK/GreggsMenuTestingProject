@@ -62,7 +62,6 @@ export class TestHelpers {
   static async measurePageLoadTime(page: Page, url: string): Promise<number> {
     const startTime = Date.now()
     await page.goto(url)
-    //await TestHelpers.ensurePageReady(page)
     await page.waitForLoadState('networkidle')
     return Date.now() - startTime
   }
