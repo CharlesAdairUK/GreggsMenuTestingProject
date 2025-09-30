@@ -3,7 +3,6 @@ import { test, expect } from '../fixtures/../test-utils'
 
 test.describe('Greggs Menu - ARIA Label Validation', () => {
   test.beforeEach(async ({ page }) => {
-    // await TestHelpers.ensurePageReady(page)
     await page.goto('https://www.greggs.com/menu')
     await page.waitForSelector('a[data-test-card]', { timeout: 15000 })
   })
