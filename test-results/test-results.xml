@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="10.98072800000012">
-<testsuite name="menu-dom-traversal.spec.ts" timestamp="2025-09-30T12:23:28.001Z" hostname="chromium" tests="1" failures="0" skipped="0" time="8.502" errors="0">
-<testcase name="should verify menu category selection displays correct section" classname="menu-dom-traversal.spec.ts" time="8.502">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="20.992568000003697">
+<testsuite name="cookiebanner.spec.ts" timestamp="2025-09-30T12:50:12.837Z" hostname="chromium" tests="1" failures="0" skipped="0" time="18.236" errors="0">
+<testcase name="Cookie banner has correct structure and accept all cookies button works" classname="cookiebanner.spec.ts" time="18.236">
 </testcase>
 </testsuite>
 </testsuites>

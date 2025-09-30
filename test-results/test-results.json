@@ -144,13 +144,13 @@
   },
   "suites": [
     {
-      "title": "menu-dom-traversal.spec.ts",
-      "file": "menu-dom-traversal.spec.ts",
+      "title": "cookiebanner.spec.ts",
+      "file": "cookiebanner.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "should verify menu category selection displays correct section",
+          "title": "Cookie banner has correct structure and accept all cookies button works",
           "ok": true,
           "tags": [],
           "tests": [
@@ -162,15 +162,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 19,
+                  "workerIndex": 21,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8502,
+                  "duration": 18236,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-09-30T12:23:29.044Z",
+                  "startTime": "2025-09-30T12:50:13.979Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -178,9 +178,9 @@
               "status": "expected"
             }
           ],
-          "id": "a60b2737256119160f82-e1ee1fbbb93993aec718",
-          "file": "menu-dom-traversal.spec.ts",
-          "line": 181,
+          "id": "b766ee01dea772c69297-063b2c20af76fc4b7633",
+          "file": "cookiebanner.spec.ts",
+          "line": 3,
           "column": 5
         }
       ]
@@ -188,8 +188,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-30T12:23:26.836Z",
-    "duration": 10980.72800000012,
+    "startTime": "2025-09-30T12:50:11.735Z",
+    "duration": 20992.568000003695,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,
