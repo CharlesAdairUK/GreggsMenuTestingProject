@@ -5,7 +5,6 @@ test.describe('Greggs Menu Items - DOM Optimized', () => {
   test('should identify and test each menu item using actual DOM structure', async ({
     page,
   }) => {
-    //await TestHelpers.ensurePageReady(page);
     await page.goto('https://www.greggs.com/menu')
     await page.waitForLoadState('networkidle')
 
