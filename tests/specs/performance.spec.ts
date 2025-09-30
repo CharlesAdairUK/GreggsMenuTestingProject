@@ -11,6 +11,8 @@ test.describe('Performance Tests', () => {
     const loadTime = await TestHelpers.measurePageLoadTime(page, menuPage.url)
     expect(loadTime).toBeLessThan(TestData.performanceThresholds.pageLoadTime)
 
+    // Ensure page is ready before checking essential content
+    await TestHelpers.ensurePageReady(page)
     // Essential content should be visible
     await expect(
       page.locator('h1, .menu-title, [data-testid="page-title"]').first(),
