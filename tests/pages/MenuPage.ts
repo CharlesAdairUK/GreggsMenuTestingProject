@@ -241,7 +241,6 @@ export class MenuPage extends BasePage {
     )
     return categories.filter((category) => category.length > 0)
   }
-
   /**
    * Scrolls the filters modal to reveal more options
    */
